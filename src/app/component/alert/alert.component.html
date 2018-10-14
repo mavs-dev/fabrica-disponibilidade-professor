@@ -1,0 +1,6 @@
+<div class="alert {{classeCSS ? classeCSS: 'alert-warning'}} alert-dismissible fade show" role="alert">
+  <strong *ngIf="requerAtencao">Atenção!</strong> {{mensagem}}
+  <button *ngIf="exibeBotaoFechar" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

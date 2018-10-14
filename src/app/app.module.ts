@@ -7,6 +7,7 @@ import { CardComponent } from './component/card/card.component';
 import { CardLoginComponent } from './component/card-login/card-login.component';
 import { ImageResponsiveComponent } from './component/image-responsive/image-responsive.component';
 import { ImageProjecaoResponsiveComponent } from './component/image-projecao-responsive/image-projecao-responsive.component';
+import { AlertComponent } from './component/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ImageProjecaoResponsiveComponent } from './component/image-projecao-res
     CardComponent,
     CardLoginComponent,
     ImageResponsiveComponent,
-    ImageProjecaoResponsiveComponent
+    ImageProjecaoResponsiveComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule
