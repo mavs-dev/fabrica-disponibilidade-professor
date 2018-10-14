@@ -1,0 +1,20 @@
+.btn-cor-padrao {
+    color: #ffffff;
+    background-color: #0a0330;
+    border-color: #0a0330;
+}
+
+.btn-cor-padrao:hover {
+    color: #ffffff;
+    background-color: #fd0b0b;
+    border-color: #fd0b0b;
+}
+
+.cor-link-vermelho {
+    color: #fd0b0b;
+}
+
+.cor-link-vermelho:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
