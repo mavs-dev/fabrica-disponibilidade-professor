@@ -1,0 +1,11 @@
+@media (min-width: 992px) {
+  .dropdown-usuario {
+    margin-left: -7em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dropdown-usuario {
+    margin-left: -7em;
+  }
+}

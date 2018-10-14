@@ -17,6 +17,8 @@ import { InputDateComponent } from './component/inputs/input-date/input-date.com
 import { InputPasswordComponent } from './component/inputs/input-password/input-password.component';
 import { InputNumberComponent } from './component/inputs/input-number/input-number.component';
 import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { HeaderComponent } from './component/header/header.component';
     InputDateComponent,
     InputPasswordComponent,
     InputNumberComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
