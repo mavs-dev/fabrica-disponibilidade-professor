@@ -19,6 +19,8 @@ import { InputNumberComponent } from './component/inputs/input-number/input-numb
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/disciplinas-interesse.component';
+import { ModalComponent } from './component/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { HomeComponent } from './pages/home/home.component';
     InputNumberComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    DisciplinasInteresseComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
