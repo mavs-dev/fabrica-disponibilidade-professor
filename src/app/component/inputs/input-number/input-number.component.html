@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label for="graduacao">{{inputName}}</label>
+  <div class="input-group mb-3">
+    <div *ngIf="icone" class="input-group-prepend">
+      <span class="input-group-text" id="graduacao"><i class="fas {{icone}}"></i></span>
+    </div>
+    <input type="number" class="form-control" placeholder="{{placeText}}" aria-label="[[placeText]]" aria-describedby="graduacao">
+  </div>
+</div>
