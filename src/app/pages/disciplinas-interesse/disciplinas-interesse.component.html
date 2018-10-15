@@ -1,5 +1,6 @@
 <p>
-  Faça a indicação da(s) disciplina(s) diante de uma ordem de preferência/domínio da matéria, indicando ainda a(s) unidade(s) em que gostaria de ministrar a(s) aula(s). Indique no mínimo 4(quatro) disciplinas.
+  Faça a indicação da(s) disciplina(s) diante de uma ordem de preferência/domínio da matéria, indicando ainda a(s)
+  unidade(s) em que gostaria de ministrar a(s) aula(s). Indique no mínimo 4(quatro) disciplinas.
 </p>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -7,55 +8,54 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Formulário para disciplina de interesse</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Formulário para a(s) disciplina(s) de interesse.</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <pj-input-text placeText="Disciplina"></pj-input-text>
-        <select class="custom-select" multiple>
-          <option selected>Selecione a(s) unidade(s) desejada(s)</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-        <table class="table">
-          <thead class="thead-light">
+        <div class="mb-4">
+          <h5 class="mb-4">Selecione a(s) unidade(s) em que gostaria de ministrar a(s) aula(s).</h5>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkboxSobradinho" value="option1">
+            <label class="form-check-label" for="checkboxSobradinho">Sobradinho</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkboxTaguatinga" value="option1">
+            <label class="form-check-label" for="checkboxTaguatinga">Taguatinga</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkboxTaguatingaNorte" value="option1">
+            <label class="form-check-label" for="checkboxTaguatingaNorte">Taguatinga Norte</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkboxCeilandia" value="option1">
+            <label class="form-check-label" for="checkboxCeilandia">Ceilândia</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="checkboxGuara" value="option1">
+            <label class="form-check-label" for="checkboxGuara">Guará</label>
+          </div>
+        </div>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col" class="text-center">Seg</th>
-              <th scope="col" class="text-center">Ter</th>
-              <th scope="col" class="text-center">Qua</th>
-              <th scope="col" class="text-center">Qui</th>
-              <th scope="col" class="text-center">Sex</th>
+              <th scope="col"></th>
+              <th scope="col" class="text-center">Segunda</th>
+              <th scope="col" class="text-center">Terça</th>
+              <th scope="col" class="text-center">Quarta</th>
+              <th scope="col" class="text-center">Quinta</th>
+              <th scope="col" class="text-center">Sexta</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">Matutino</th>
-              <td class="text-center">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              </td>
-              <td class="text-center">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              </td>
-              <td class="text-center">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              </td>
-              <td class="text-center">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              </td>
-              <td class="text-center">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Vespertino</th>
               <td class="text-center">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
               </td>
@@ -94,7 +94,7 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Cadastrar</button>
+        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Cadastrar disciplina">Cadastrar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
