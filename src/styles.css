@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-html, body{
+
+html, body {
     height: 100% !important;
     padding-top: 4rem !important;
+}
+
+.bg-azul-projecao {
+    background-color: #032a51;
+}
+
+.bg-vermelho-projecao {
+    background-color: #d93b3b;
 }

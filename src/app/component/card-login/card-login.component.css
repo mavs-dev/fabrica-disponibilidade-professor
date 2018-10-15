@@ -6,15 +6,11 @@
 
 .btn-cor-padrao:hover {
     color: #ffffff;
-    background-color: #fd0b0b;
-    border-color: #fd0b0b;
+    background-color: #06021f;
+    border-color: #06021f;
 }
 
-.cor-link-vermelho {
-    color: #fd0b0b;
-}
-
-.cor-link-vermelho:hover {
+#link-hover:hover {
     text-decoration: none;
     font-weight: bold;
 }
