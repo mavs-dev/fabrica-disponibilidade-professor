@@ -1,47 +1,87 @@
 <pj-header></pj-header>
 
-<div class="container">
-  <pj-input-text icone="fa-user-graduate" placeText="Graduação"></pj-input-text>
-  <pj-input-date></pj-input-date>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i></label>
+<div class="container shadow p-3 mb-5 bg-white rounded">
+
+  <div class="card-header mb-4">
+    <b>CADASTRO DE DADOS PESSOAIS</b>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-8">
+      <pj-input-text icone="fa-user-graduate" placeText="Graduação"></pj-input-text>
     </div>
-    <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Escolha o nível de Graduação...</option>
-      <option value="1">Tecnólogo</option>
-      <option value="2">Bacharelado</option>
-      <option value="3">Pós-Graduação</option>
-      <option value="4">Mestrado</option>
-      <option value="5">Doutorado</option>
-    </select>
+    <div class="col-md-4">
+      <pj-input-date></pj-input-date>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="input-group mb-3 col-md-8">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i></label>
+      </div>
+      <select class="custom-select" id="inputGroupSelect01">
+        <option selected>Escolha o nível de Graduação...</option>
+        <option value="1">Tecnólogo</option>
+        <option value="2">Bacharelado</option>
+        <option value="3">Pós-Graduação</option>
+        <option value="4">Mestrado</option>
+        <option value="5">Doutorado</option>
+      </select>
+    </div>
   </div>
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Titulação em andamento?</label>
+    <input type="checkbox" class="form-check-input" id="checkTitulacaoAndamento">
+    <label class="form-check-label" for="checkTitulacaoAndamento">Titulação em andamento?</label>
   </div>
-  <pj-input-text placeText="Principal atuação profissional"></pj-input-text>
-  <pj-input-number placeText="Digite a quantidade de meses" inputName="Tempo de exp. profissional"></pj-input-number>
-  <pj-input-number placeText="Digite a quantidade de meses" inputName="Tempo de exp. magistério superior"></pj-input-number>
-  <div class="form-group">
-    <label for="graduacao">Tempo de exp. docência na ed. básica <span class="badge badge-secondary" data-toggle="tooltip"
-        title="" data-original-title="Somente para docentes da escola de formação de professores.">?</span></label>
-    <div class="input-group mb-3">
-      <input type="number" class="form-control" placeholder="Digite a quantidade de meses" aria-label="Digite a quantidade de meses"
-        aria-describedby="graduacao">
+  <div class="form-group row">
+    <div class="col-md-8">
+      <pj-input-text placeText="Principal atuação profissional"></pj-input-text>
     </div>
   </div>
-  <pj-input-date></pj-input-date>
-  <pj-input-text placeText="URL do curriculo lattes exemplo http://professorfilemon.com.br"></pj-input-text>
+  <div class="form-group row">
+    <div class="col-md-4">
+      <pj-input-number placeText="Digite a quantidade de meses" inputName="Tempo de exp. profissional"></pj-input-number>
+    </div>
+    <div class="col-md-4">
+      <pj-input-number placeText="Digite a quantidade de meses" inputName="Tempo de exp. magistério superior"></pj-input-number>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="graduacao">Tempo de exp. docência na ed. básica <span class="badge badge-secondary" data-toggle="tooltip"
+            title="" data-original-title="Somente para docentes da escola de formação de professores.">?</span></label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" placeholder="Digite a quantidade de meses" aria-label="Digite a quantidade de meses"
+            aria-describedby="graduacao">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-8">
+      <pj-input-text placeText="URL do curriculo lattes exemplo http://professorfilemon.com.br"></pj-input-text>
+    </div>
+    <div class="col-md-4">
+      <pj-input-date></pj-input-date>
+    </div>
+  </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Publicações do Lattes</label>
     <div class="input-group">
       <!-- <div class="input-group-prepend">
         <span class="input-group-text">With textarea</span>
       </div> -->
-      <textarea class="form-control" aria-label="With textarea" placeholder="Informe as publicações nos últimos 3 anos (Título, Ano e Local de publicação)" rows="5" maxlength="1000" style="resize: none;"></textarea>
+      <textarea class="form-control" aria-label="With textarea" placeholder="Informe as publicações dos últimos 3 anos (Título, Ano e Local de publicação)"
+        rows="5" maxlength="1000" style="resize: none;"></textarea>
     </div>
   </div>
+
+  <div class="form-group row text-right">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-outline-primary">
+          <i class="fas fa-save"></i> Cadastrar
+        </button>
+      </div>
+    </div>
 </div>
 
 <pj-footer></pj-footer>
