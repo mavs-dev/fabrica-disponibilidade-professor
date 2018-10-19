@@ -18,7 +18,7 @@ export class DisponibilidadesComponent implements OnInit {
       { item_id: 1, item_text: 'Sobradinho' },
       { item_id: 2, item_text: 'Ceilândia' },
       { item_id: 3, item_text: 'Taguatinga' },
-      { item_id: 4, item_text: 'Taguatinga Norte' },
+      { item_id: 4, item_text: 'Tag. Norte' },
       { item_id: 5, item_text: 'Guará' }
     ];
 
