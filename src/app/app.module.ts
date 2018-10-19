@@ -24,6 +24,7 @@ import { ModalComponent } from './component/modal/modal.component';
 
 // BIBLIOTECAS EXTERNAS
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilidades.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FooterComponent,
     HomeComponent,
     DisciplinasInteresseComponent,
-    ModalComponent
+    ModalComponent,
+    DisponibilidadesComponent
   ],
   imports: [
     BrowserModule,

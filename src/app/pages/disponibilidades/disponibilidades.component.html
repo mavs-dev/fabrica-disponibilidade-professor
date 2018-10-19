@@ -1,0 +1,176 @@
+<pj-header></pj-header>
+
+<div class="container shadow p-3 mb-5 bg-white rounded">
+
+  <div class="card-header mb-4">
+    <b>INDICAÇÃO DAS UNIDADES E TURNOS DE DISPONIBILIDADE</b>
+  </div>
+
+  <p>
+    Disponibilidade de horário para o 1º Semestre de 2019
+  </p>
+
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <form action="" class="">
+
+      <div class="row col-md-2">
+        <p class="font-weight-bold text-uppercase">matutino</p>
+      </div>
+
+      <!-- DIV TURNO MATUTINO -->
+      <div class="row col-md-12">
+        <div class="form-group col-sm-2">
+          <label for="inputDisponibilidadeSegunda">SEG</label>
+          <ng-multiselect-dropdown 
+            name="unidadesAcademicas" 
+            [placeholder]="'Selecione ...'" 
+            [data]="unidadesAcademicas"
+            [disabled]="disabled" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="form-group col-sm-2">
+          <label for="inputDisponibilidadeSegunda">TER</label>
+          <ng-multiselect-dropdown 
+            name="unidadesAcademicas" 
+            [placeholder]="'Selecione ...'" 
+            [data]="unidadesAcademicas"
+            [disabled]="disabled" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="form-group col-sm-2">
+          <label for="inputDisponibilidadeSegunda">QUA</label>
+          <ng-multiselect-dropdown 
+            name="unidadesAcademicas" 
+            [placeholder]="'Selecione ...'" 
+            [data]="unidadesAcademicas"
+            [disabled]="disabled" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="form-group col-sm-2">
+          <label for="inputDisponibilidadeSegunda">QUI</label>
+          <ng-multiselect-dropdown 
+            name="unidadesAcademicas" 
+            [placeholder]="'Selecione ...'" 
+            [data]="unidadesAcademicas"
+            [disabled]="disabled" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="form-group col-sm-2">
+          <label for="inputDisponibilidadeSegunda">SEX</label>
+          <ng-multiselect-dropdown 
+            name="unidadesAcademicas" 
+            [placeholder]="'Selecione ...'" 
+            [data]="unidadesAcademicas"
+            [disabled]="disabled" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="form-group col-sm-2">
+          <label for="inputDisponibilidadeSegunda">SÁB</label>
+          <ng-multiselect-dropdown 
+            name="unidadesAcademicas" 
+            [placeholder]="'Selecione ...'" 
+            [data]="unidadesAcademicas"
+            [disabled]="disabled" 
+            [settings]="dropdownSettings" 
+            (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <!-- /DIV TURNO MATUTINO -->
+
+      <div class="row col-md-2">
+        <p class="font-weight-bold text-uppercase">noturno</p>
+      </div>
+
+       <!-- DIV TURNO NOTURNO -->
+       <div class="row col-md-12">
+          <div class="form-group col-sm-2">
+            <label for="inputDisponibilidadeSegunda">SEG</label>
+            <ng-multiselect-dropdown 
+              name="unidadesAcademicas" 
+              [placeholder]="'Selecione ...'" 
+              [data]="unidadesAcademicas"
+              [disabled]="disabled" 
+              [settings]="dropdownSettings" 
+              (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
+          </div>
+  
+          <div class="form-group col-sm-2">
+            <label for="inputDisponibilidadeSegunda">TER</label>
+            <ng-multiselect-dropdown 
+              name="unidadesAcademicas" 
+              [placeholder]="'Selecione ...'" 
+              [data]="unidadesAcademicas"
+              [disabled]="disabled" 
+              [settings]="dropdownSettings" 
+              (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
+          </div>
+  
+          <div class="form-group col-sm-2">
+            <label for="inputDisponibilidadeSegunda">QUA</label>
+            <ng-multiselect-dropdown 
+              name="unidadesAcademicas" 
+              [placeholder]="'Selecione ...'" 
+              [data]="unidadesAcademicas"
+              [disabled]="disabled" 
+              [settings]="dropdownSettings" 
+              (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
+          </div>
+  
+          <div class="form-group col-sm-2">
+            <label for="inputDisponibilidadeSegunda">QUI</label>
+            <ng-multiselect-dropdown 
+              name="unidadesAcademicas" 
+              [placeholder]="'Selecione ...'" 
+              [data]="unidadesAcademicas"
+              [disabled]="disabled" 
+              [settings]="dropdownSettings" 
+              (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
+          </div>
+  
+          <div class="form-group col-sm-2">
+            <label for="inputDisponibilidadeSegunda">SEX</label>
+            <ng-multiselect-dropdown 
+              name="unidadesAcademicas" 
+              [placeholder]="'Selecione ...'" 
+              [data]="unidadesAcademicas"
+              [disabled]="disabled" 
+              [settings]="dropdownSettings" 
+              (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <!-- /DIV TURNO NOTURNO -->
+
+        <div class="form-group row text-right">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-outline-primary">
+              <i class="fas fa-save"></i> Cadastrar disponibilidades
+            </button>
+          </div>
+        </div>
+
+    </form>
+  </div>
+</div>
+
+<pj-footer></pj-footer>
