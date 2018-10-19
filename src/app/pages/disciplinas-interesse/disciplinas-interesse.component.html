@@ -1,9 +1,220 @@
-<div class="container">
+<div class="container shadow p-3 mb-5 bg-white rounded">
+
+  <div class="card-header mb-4">
+    <b>INDICAÇÃO DAS DISCIPLINAS DE INTERESSE</b>
+  </div>
+
   <p>
     Faça a indicação da(s) disciplina(s) diante de uma ordem de preferência/domínio da matéria, indicando ainda a(s)
     unidade(s) em que gostaria de ministrar a(s) aula(s). Indique no mínimo 4(quatro) disciplinas.
   </p>
-  <table class="table">
+
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <form action="" class="">
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina1">1</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina1" id="inputNomeDisciplina1" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina2">2</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina2" id="inputNomeDisciplina2" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina3">3</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina3" id="inputNomeDisciplina3" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina4">4</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina4" id="inputNomeDisciplina4" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina5">5</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina5" id="inputNomeDisciplina5" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina6">6</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina6" id="inputNomeDisciplina6" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina7">7</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina7" id="inputNomeDisciplina7" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina8">8</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina8" id="inputNomeDisciplina8" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina9">9</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina9" id="inputNomeDisciplina9" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-1">
+          <label for="inputNomeDisciplina10">10</label>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="inputNomeDisciplina10" id="inputNomeDisciplina10" placeholder="Nome da disciplina">
+        </div>
+        <div class="col-md-4">
+          <ng-multiselect-dropdown name="unidadesAcademicas" [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-1 mx-auto">
+          <a href="#" class="">
+            <i class="fas fa-trash fa-lg align-middle"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-group row text-right">
+        <div class="col-md-11">
+          <button type="button" class="btn btn-outline-primary">
+            <i class="fas fa-save"></i> Cadastrar indicações
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+  <!-- <table class="table">
     <thead class="thead-light">
       <tr>
         <th scope="col" class="text-center">Opção</th>
@@ -17,23 +228,23 @@
         <td class="text-center">Sistemas de informação</td>
         <td class="d-flex justify-content-around">
           <a href="#" class=""><i class="fas fa-info-circle fa-lg"></i></a>
-          <!-- <i class="far fa-file-alt"></i> -->
           <a href="#" class=""><i class="far fa-edit fa-lg"></i></a>
           <a href="#" class=""><i class="fas fa-trash fa-lg"></i></a>
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Adicionar
-  </button>
+  </button> -->
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-backdrop="static">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">

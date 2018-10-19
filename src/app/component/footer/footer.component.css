@@ -32,7 +32,7 @@
 
 @media (min-width: 992px) {
   .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: auto;
@@ -44,7 +44,7 @@
 
 @media (min-width: 1200px) {
   .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: auto;

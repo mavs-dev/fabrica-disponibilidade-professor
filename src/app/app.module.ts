@@ -22,6 +22,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/disciplinas-interesse.component';
 import { ModalComponent } from './component/modal/modal.component';
 
+// BIBLIOTECAS EXTERNAS
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,8 @@ import { ModalComponent } from './component/modal/modal.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
