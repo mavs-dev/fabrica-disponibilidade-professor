@@ -26,7 +26,7 @@ export class DadosProfissionaisService {
       );
   }
 
-  save(dadosProfissionais: DadosProfissionais) {
+  save(dadosProfissionais: DadosProfissionais): Observable<DadosProfissionais> {
     return this.http
       .post<DadosProfissionais>(API_SERVICE_DADOS_PROFISSIONAIS, dadosProfissionais)
       .pipe(

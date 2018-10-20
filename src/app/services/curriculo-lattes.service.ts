@@ -26,7 +26,7 @@ export class CurriculoLattesService {
       );
   }
 
-  save(curriculoLattes: CurriculoLattes) {
+  save(curriculoLattes: CurriculoLattes): Observable<CurriculoLattes> {
     return this.http
       .post<CurriculoLattes>(API_SERVICE_CURRICULO_LATTES, curriculoLattes)
       .pipe(

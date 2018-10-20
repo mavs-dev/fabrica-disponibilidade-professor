@@ -82,8 +82,11 @@
           row="5" maxlength="1000"></pj-text-area>
       </div>
     </div>
-    <div class="row text-right">
-      <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-8">
+          <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
+      </div>
+      <div class="col-md-4 text-right">
         <button [disabled]="dadosProfissionaisForm.invalid" type="submit" class="btn btn-outline-primary">
           <i class="fas fa-save"></i> Salvar
         </button>

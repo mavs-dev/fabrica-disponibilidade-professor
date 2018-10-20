@@ -63,7 +63,6 @@ import { TextAreaComponent } from './component/inputs/text-area/text-area.compon
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
-    LoginService
   ],
   bootstrap: [AppComponent]
 })

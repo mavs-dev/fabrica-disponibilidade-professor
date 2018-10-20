@@ -11,5 +11,6 @@ export interface DadosProfissionais {
     tempoExpProfissional: number;
     tempoExpMagisterioSuperior: number;
     tempoExpDocenciaEdBasica: number;
-    curriculoLattes: CurriculoLattes;
+    curriculoLattes: any;
+    professor: any;
 }
