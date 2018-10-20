@@ -29,6 +29,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TextAreaComponent } from './component/inputs/text-area/text-area.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     DisciplinasInteresseComponent,
     ModalComponent,
     DisponibilidadesComponent,
-    FormularioComponent
+    FormularioComponent,
+    TextAreaComponent
   ],
   imports: [
     BrowserModule,

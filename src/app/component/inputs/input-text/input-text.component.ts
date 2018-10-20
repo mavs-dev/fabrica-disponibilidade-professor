@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'pj-input-text',
@@ -11,10 +12,20 @@ export class InputTextComponent implements OnInit {
   icone: string;
   @Input()
   placeText: string;
+  @Input()
+  name: string;
+  @Input()
+  label: string;
+
+  text = new FormControl();
+
+  @Output()
+  formControl = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+    this.formControl.emit(this.text);
   }
 
 }

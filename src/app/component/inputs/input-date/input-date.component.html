@@ -1,6 +1,9 @@
+<div class="form-group">
+  <label *ngIf="label" for="{{name}}">{{label}} <ng-content></ng-content></label>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="dataConclusao"><i class="far fa-calendar-alt"></i></span>
+    <span class="input-group-text" id="{{name}}"><i class="far fa-calendar-alt"></i></span>
   </div>
-  <input type="date" class="form-control" placeholder="Data de conclusão" aria-label="Data de conclusão" aria-describedby="dataConclusao">
+  <input [formControl]="date" type="date" class="form-control" aria-label="none" aria-describedby="none">
+</div>
 </div>

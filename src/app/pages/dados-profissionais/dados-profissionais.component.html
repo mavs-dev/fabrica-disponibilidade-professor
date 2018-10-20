@@ -3,95 +3,91 @@
   <div class="card-header mb-4">
     <b>CADASTRO DE DADOS PESSOAIS</b>
   </div>
-
-  <div class="form-group row">
-    <div class="col-md-8">
-      <label for="inputGraduacao">Graduação</label>
-      <pj-input-text icone="fa-user-graduate" placeText="Graduação" id="inputGraduacao"></pj-input-text>
-    </div>
-    <div class="col-md-4">
-      <label for="inputDataGraduacao">Data de conclusão</label>
-      <pj-input-date id="inputDataGraduacao"></pj-input-date>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-md-8">
-      <label for="inputNivelGraduacao">Nível de graduação</label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputNivelGraduacao"><i class="fas fa-graduation-cap"></i></label>
-        </div>
-        <select class="custom-select" id="inputNivelGraduacao">
-          <option selected>Escolha o nível de graduação...</option>
-          <option value="1">Tecnólogo</option>
-          <option value="2">Bacharelado</option>
-          <option value="3">Pós-Graduação</option>
-          <option value="4">Mestrado</option>
-          <option value="5">Doutorado</option>
-        </select>
+  <form [formGroup]="dadosProfissionaisForm" (ngSubmit)="salvar()">
+    <div class="row">
+      <div class="col-md-8">
+        <pj-input-text (formControl)="addFormControl('graduacao', $event)" label="Graduação" name="graduacao" icone="fa-user-graduate"
+          placeText="Digite o curso de sua graduação"></pj-input-text>
+      </div>
+      <div class="col-md-4">
+        <pj-input-date (formControl)="addFormControl('dataConclusao', $event)" label="Data de conclusão" name="dataConclusao"></pj-input-date>
       </div>
     </div>
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="checkTitulacaoAndamento" #showInputNomeTitulacao (change)="0">
-    <label class="form-check-label" for="checkTitulacaoAndamento">Titulação em andamento?</label>
-  </div>
-  <div class="form-group row" *ngIf="showInputNomeTitulacao.checked">
-    <div class="col-md-8">
-      <label for="inputTitulacaoAndamento">Nome da titulação em andamento</label>
-      <pj-input-text placeText="Titulação em andamento" inputName="titulacaoAndamento"></pj-input-text>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-md-8">
-      <label for="inputPrincipalAtuacaoProfissional">Principal atuação profissional</label>
-      <pj-input-text placeText="Principal atuação profissional" id="inputPrincipalAtuacaoProfissional"></pj-input-text>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-md-4">
-      <pj-input-number placeText="Digite a quantidade de meses" inputName="Tempo de exp. profissional"></pj-input-number>
-    </div>
-    <div class="col-md-4">
-      <pj-input-number placeText="Digite a quantidade de meses" inputName="Tempo de exp. magistério superior"></pj-input-number>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <label for="graduacao">Tempo de exp. docência na ed. básica <span class="badge badge-secondary" data-toggle="tooltip"
-            title="" data-original-title="Somente para docentes da escola de formação de professores.">?</span></label>
+    <div class="row">
+      <div class="col-md-8">
+        <label for="inputNivelGraduacao">Maior titulação obtida</label>
         <div class="input-group mb-3">
-          <input type="number" class="form-control" placeholder="Digite a quantidade de meses" aria-label="Digite a quantidade de meses"
-            aria-describedby="graduacao">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputNivelGraduacao"><i class="fas fa-graduation-cap"></i></label>
+          </div>
+          <select formControlName="nivelGraduacao" class="custom-select" id="inputNivelGraduacao">
+            <option value="">Escolha o nível da maior titulação obtida...</option>
+            <option value="GRADUACAO">Graduação</option>
+            <option value="POS_GRADUACAO">Pós-Graduação</option>
+            <option value="MESTRADO">Mestrado</option>
+            <option value="DOUTORADO">Doutorado</option>
+          </select>
         </div>
       </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-md-8">
-      <label for="inputLattes">URL currículo Lattes</label>
-      <pj-input-text placeText="URL do curriculo lattes exemplo http://professorfilemon.com.br" id="inputLattes"></pj-input-text>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group form-check">
+          <input formControlName="titulacaoEmAndamento" type="checkbox" class="form-check-input" id="checkTitulacaoAndamento"
+            #showInputNomeTitulacao (change)="0">
+          <label class="form-check-label" for="checkTitulacaoAndamento">Possui titulação em andamento?</label>
+        </div>
+      </div>
+      <div [ngStyle]="{display: showInputNomeTitulacao.checked ? 'unset' : 'none'}" class="col-md-8">
+        <pj-input-text (formControl)="addFormControl('descricaoTitulacaoEmAndamento', $event)" placeText="Digite o nome da titulação que está em andamento"
+          name="titulacaoAndamento"></pj-input-text>
+      </div>
     </div>
-    <div class="col-md-4">
-      <label for="inputDataAtualizacaoLattes">Data atualização Lattes</label>
-      <pj-input-date id="inputDataAtualizacaoLattes"></pj-input-date>
+    <div class=" row">
+      <div class="col-md-8">
+        <pj-input-text (formControl)="addFormControl('principalAtuacaoProfissional', $event)" placeText="Digite o nome do cargo"
+          label="Principal atuação profissional" name="principalAtuacaoProfissional"></pj-input-text>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Publicações do Lattes</label>
-    <div class="input-group">
-      <!-- <div class="input-group-prepend">
-        <span class="input-group-text">With textarea</span>
-      </div> -->
-      <textarea class="form-control" aria-label="With textarea" placeholder="Informe as publicações dos últimos 3 anos (Título, Ano e Local de publicação)"
-        rows="5" maxlength="1000" style="resize: none;"></textarea>
+    <div class="row">
+      <div class="col-md-4">
+        <pj-input-number (formControl)="addFormControl('tempoExpProfissional', $event)" placeText="Digite a quantidade de meses"
+          label="Tempo de exp. profissional" name="expProfissional"></pj-input-number>
+      </div>
+      <div class="col-md-4">
+        <pj-input-number (formControl)="addFormControl('tempoExpMagisterioSuperior', $event)" placeText="Digite a quantidade de meses"
+          label="Tempo de exp. magistério superior" name="expMagisterioSuperior"></pj-input-number>
+      </div>
+      <div class="col-md-4">
+        <pj-input-number (formControl)="addFormControl('tempoExpDocenciaEdBasica', $event)" placeText="Digite a quantidade de meses"
+          label="Tempo de exp. docência na ed. básica" name="expDocenciaEdBasica">
+          <span class="badge badge-secondary" data-toggle="tooltip" title="" data-original-title="Somente para docentes da escola de formação de professores.">?</span>
+        </pj-input-number>
+      </div>
     </div>
-  </div>
-
-  <div class="form-group row text-right">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-outline-primary">
-        <i class="fas fa-save"></i> Cadastrar
-      </button>
+    <div class="row">
+      <div class="col-md-8">
+        <pj-input-text (formControl)="addFormControl('curriculoLattesUrl', $event)" placeText="URL do curriculo lattes exemplo http://professorfilemon.com.br"
+          label="URL currículo Lattes" name="curriculoLattesUrl"></pj-input-text>
+      </div>
+      <div class="col-md-4">
+        <pj-input-date (formControl)="addFormControl('curriculoLattesDataAtt', $event)" label="Data atualização Lattes"
+          name="curriculoLattesDataAtt"></pj-input-date>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-12">
+        <pj-text-area (formControl)="addFormControl('publicacoes', $event)" label="Últimas Publicações do Lattes"
+          placeText="Informe as publicações dos últimos 3 anos (Título, Ano e Local de publicação)" name="publicacoes"
+          row="5" maxlength="1000"></pj-text-area>
+      </div>
+    </div>
+    <div class="row text-right">
+      <div class="col-md-12">
+        <button [disabled]="dadosProfissionaisForm.invalid" type="submit" class="btn btn-outline-primary">
+          <i class="fas fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

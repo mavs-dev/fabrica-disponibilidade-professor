@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-declare var $;
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'pj-input-number',
@@ -13,14 +13,21 @@ export class InputNumberComponent implements OnInit {
   @Input()
   placeText: string;
   @Input()
-  inputName: string;
+  name: string;
   @Input()
-  observacao: boolean;
+  label: string;
+  @Input()
+  mensagemAjuda: string;
+
+  number = new FormControl();
+
+  @Output()
+  formControl = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    $('[data-toggle="tooltip"]').tooltip();
+    this.formControl.emit(this.number);
   }
 
 }

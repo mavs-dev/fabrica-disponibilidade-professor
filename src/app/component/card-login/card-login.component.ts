@@ -23,14 +23,14 @@ export class CardLoginComponent implements OnInit {
 
   configurarFormulario() {
     this.loginForm = this.formBuilder.group({
-      inputEmail: [null, [Validators.required, Validators.pattern(/^[a-z]+\.[a-z]+?$/i)]],
+      // TODO retirar [0-9]
+      inputEmail: [null, [Validators.required, Validators.pattern(/^[a-z]+\.[a-z]+[0-9]+?$/i)]],
       inputSenha: [null, [Validators.required]]
     });
   }
 
   login () {
     this.mensagemErro.emit('');
-    console.log('Objeto do form: ', this.loginForm);
     const usuario = {
       id: null,
       nome: null,
@@ -42,15 +42,13 @@ export class CardLoginComponent implements OnInit {
       perfil: null,
       dadosProfissionais: null,
     };
-    console.log('Objeto do usuario: ', usuario);
     this.service.login(usuario).subscribe(data => {
-      console.log(data);
       if (data && !data.mensagemErro) {
-        console.log('login efetuado');
         usuario.id = data.idUsuario;
+        usuario.nome = data.nomeUsuario;
         usuario.senha = null;
         sessionStorage.setItem('usuario', JSON.stringify(usuario));
-        sessionStorage.setItem('time', JSON.stringify(data.sessionTime));
+        sessionStorage.setItem('time', data.sessionTime);
         this.router.navigate(['/formulario']);
       } else if (data && data.mensagemErro) {
         this.mensagemErro.emit(data.mensagemErro);

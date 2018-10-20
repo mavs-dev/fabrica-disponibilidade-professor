@@ -1,9 +1,10 @@
 <div class="form-group">
-  <label for="graduacao">{{inputName}}</label>
+  <label *ngIf="label" for="{{name}}">{{label}} <ng-content></ng-content></label>
   <div class="input-group mb-3">
     <div *ngIf="icone" class="input-group-prepend">
-      <span class="input-group-text" id="graduacao"><i class="fas {{icone}}"></i></span>
+      <span class="input-group-text" id="{{name}}"><i class="fas {{icone}}"></i></span>
     </div>
-    <input type="number" class="form-control" placeholder="{{placeText}}" aria-label="[[placeText]]" aria-describedby="graduacao">
+    <input [formControl]="number" type="number" class="form-control" placeholder="{{placeText}}" aria-label="none"
+      aria-describedby="none">
   </div>
 </div>
