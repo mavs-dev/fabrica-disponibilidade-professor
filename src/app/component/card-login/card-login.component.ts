@@ -1,7 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pj-card-login',
@@ -11,10 +12,10 @@ import { Usuario } from 'src/app/interfaces/usuario';
 export class CardLoginComponent implements OnInit {
 
   @Output()
-  mensagemErro: string;
+  mensagemErro = new EventEmitter();
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private service: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private service: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.configurarFormulario();
@@ -28,6 +29,7 @@ export class CardLoginComponent implements OnInit {
   }
 
   login () {
+    this.mensagemErro.emit('');
     console.log('Objeto do form: ', this.loginForm);
     const usuario = {
       id: null,
@@ -41,11 +43,20 @@ export class CardLoginComponent implements OnInit {
       dadosProfissionais: null,
     };
     console.log('Objeto do usuario: ', usuario);
-    this.service.login(usuario).subscribe(data => function() {
-      if (data) {
+    this.service.login(usuario).subscribe(data => {
+      console.log(data);
+      if (data && !data.mensagemErro) {
         console.log('login efetuado');
+        usuario.id = data.idUsuario;
+        usuario.senha = null;
         sessionStorage.setItem('usuario', JSON.stringify(usuario));
-        sessionStorage.setItem('time', JSON.stringify(data));
+        sessionStorage.setItem('time', JSON.stringify(data.sessionTime));
+        this.router.navigate(['/formulario']);
+      } else if (data && data.mensagemErro) {
+        this.mensagemErro.emit(data.mensagemErro);
+        setTimeout(() => {
+          this.mensagemErro.emit(null);
+        }, 30000);
       }
     });
   }
