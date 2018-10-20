@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NivelTitulacao } from '../../interfaces/nivel-titulacao';
 declare var $;
 
 @Component({
@@ -8,8 +7,6 @@ declare var $;
   styleUrls: ['./dados-profissionais.component.css']
 })
 export class DadosProfissionaisComponent implements OnInit {
-
-  niveisTitulacao: Array<NivelTitulacao>;
 
   constructor() { }
 
