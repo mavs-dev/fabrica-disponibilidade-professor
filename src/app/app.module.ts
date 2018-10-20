@@ -21,10 +21,11 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/disciplinas-interesse.component';
 import { ModalComponent } from './component/modal/modal.component';
+import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilidades.component';
+import { FormularioComponent } from './pages/formulario/formulario.component';
 
 // BIBLIOTECAS EXTERNAS
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilidades.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilid
     HomeComponent,
     DisciplinasInteresseComponent,
     ModalComponent,
-    DisponibilidadesComponent
+    DisponibilidadesComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
