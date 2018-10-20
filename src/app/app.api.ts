@@ -12,3 +12,4 @@ export const API_SERVICE_INTERESSE = `${API_HOST}/interesse`;
 export const API_SERVICE_SEMESTRE = `${API_HOST}/semestre`;
 export const API_SERVICE_UNIDADE_ACADEMICA = `${API_HOST}/unidade-academica`;
 export const API_SERVICE_USUARIO = `${API_HOST}/usuario`;
+export const API_SERVICE_LOGIN = `${API_HOST}/login`;
