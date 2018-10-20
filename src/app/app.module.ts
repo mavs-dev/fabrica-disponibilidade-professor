@@ -27,6 +27,8 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
 // BIBLIOTECAS EXTERNAS
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from './services/login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,9 +57,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
+    HttpClientModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 
