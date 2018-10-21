@@ -5,9 +5,9 @@ export interface Usuario {
     nome: string;
     email: string;
     senha: string;
+    perfil: string;
+    dadosProfissionais: DadosProfissionais;
     dataHoraCadastro: any;
     dataHoraAlteracao: any;
     dataHoraExclusao: any;
-    perfil: string;
-    dadosProfissionais: DadosProfissionais;
 }

@@ -5,6 +5,7 @@ import { DadosProfissionaisService } from 'src/app/services/dados-profissionais.
 import { CurriculoLattesService } from 'src/app/services/curriculo-lattes.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { CurriculoLattes } from 'src/app/interfaces/curriculo-lattes';
+import { DadosProfissionais } from 'src/app/interfaces/dados-profissionais';
 declare var $;
 
 @Component({
@@ -78,15 +79,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
 
   salvar() {
     // tslint:disable-next-line:prefer-const
-    let curriculoLattes = {
-      id: null,
-      dataAtualizacao: this.dadosProfissionaisForm.get('curriculoLattesDataAtt').value,
-      url: this.dadosProfissionaisForm.get('curriculoLattesUrl').value,
-      publicacoes: this.dadosProfissionaisForm.get('publicacoes').value,
-      dadosProfissionais: { id: null }
-    };
-    // tslint:disable-next-line:prefer-const
-    let dadosProfissionais = {
+    let dadosProfissionais: DadosProfissionais = {
       id: null,
       graduacao: this.dadosProfissionaisForm.get('graduacao').value,
       dataConclusao: this.dadosProfissionaisForm.get('dataConclusao').value,
@@ -98,7 +91,21 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       tempoExpMagisterioSuperior: this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').value,
       tempoExpDocenciaEdBasica: this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').value,
       curriculoLattes: null,
-      professor: this.usuario
+      professor: this.usuario,
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
+    };
+    // tslint:disable-next-line:prefer-const
+    let curriculoLattes: CurriculoLattes = {
+      id: null,
+      dataAtualizacao: this.dadosProfissionaisForm.get('curriculoLattesDataAtt').value,
+      url: this.dadosProfissionaisForm.get('curriculoLattesUrl').value,
+      publicacoes: this.dadosProfissionaisForm.get('publicacoes').value,
+      dadosProfissionais: dadosProfissionais,
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
     };
     if (this.usuario.dadosProfissionais) {
       this.dadosProfissionaisService.update(this.usuario.dadosProfissionais.id, dadosProfissionais).subscribe(data => {

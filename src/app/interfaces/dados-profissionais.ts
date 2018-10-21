@@ -13,4 +13,7 @@ export interface DadosProfissionais {
     tempoExpDocenciaEdBasica: number;
     curriculoLattes: any;
     professor: any;
+    dataHoraCadastro: any;
+    dataHoraAlteracao: any;
+    dataHoraExclusao: any;
 }

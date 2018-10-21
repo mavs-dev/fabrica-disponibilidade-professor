@@ -6,4 +6,7 @@ export interface CurriculoLattes {
     url: string;
     publicacoes: string;
     dadosProfissionais: any;
+    dataHoraCadastro: any;
+    dataHoraAlteracao: any;
+    dataHoraExclusao: any;
 }

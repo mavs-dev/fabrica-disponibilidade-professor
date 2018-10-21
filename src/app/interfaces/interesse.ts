@@ -9,4 +9,7 @@ export interface Interesse {
     disciplina: Disciplina;
     unidadesAcademicas: Array<string>;
     semestre: Semestre;
+    dataHoraCadastro: any;
+    dataHoraAlteracao: any;
+    dataHoraExclusao: any;
 }

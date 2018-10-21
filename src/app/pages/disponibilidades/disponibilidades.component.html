@@ -5,11 +5,11 @@
   </div>
 
   <p>
-    Disponibilidade de horário para o 1º Semestre de 2019
+    Informe a disponibilidade de horário para o {{semestre.semestreReferencia}}º Semestre de {{semestre.anoReferencia}}
   </p>
 
   <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <form [formGroup]="disponibilidadeForm" (ngSubmit)="teste()">
+    <form [formGroup]="disponibilidadeForm" (ngSubmit)="salvar()">
 
       <div class="row col-md-2">
         <p class="font-weight-bold text-uppercase">matutino</p>
@@ -20,10 +20,10 @@
         <div class="form-group col-sm-2">
           <label for="inputDisponibilidadeSegunda">SEG</label>
           <ng-multiselect-dropdown 
-            name="unidadesAcademicas" 
+            name="matutinoSegunda"
+            formControlName="matutinoSegunda"
             [placeholder]="'Selecione ...'" 
             [data]="unidadesAcademicas"
-            [disabled]="'disabled'"  
             [settings]="dropdownSettings" 
             (onSelect)="onItemSelect($event)"
             (onSelectAll)="onSelectAll($event)">
@@ -33,10 +33,10 @@
         <div class="form-group col-sm-2">
           <label for="inputDisponibilidadeSegunda">TER</label>
           <ng-multiselect-dropdown 
-            name="unidadesAcademicas" 
+            name="matutinoTerca" 
+            formControlName="matutinoTerca" 
             [placeholder]="'Selecione ...'" 
             [data]="unidadesAcademicas"
-            [disabled]="'disabled'"  
             [settings]="dropdownSettings" 
             (onSelect)="onItemSelect($event)"
             (onSelectAll)="onSelectAll($event)">
@@ -46,10 +46,10 @@
         <div class="form-group col-sm-2">
           <label for="inputDisponibilidadeSegunda">QUA</label>
           <ng-multiselect-dropdown 
-            name="unidadesAcademicas" 
+            name="matutinoQuarta" 
+            formControlName="matutinoQuarta" 
             [placeholder]="'Selecione ...'" 
             [data]="unidadesAcademicas"
-            [disabled]="'disabled'"  
             [settings]="dropdownSettings" 
             (onSelect)="onItemSelect($event)"
             (onSelectAll)="onSelectAll($event)">
@@ -59,10 +59,10 @@
         <div class="form-group col-sm-2">
           <label for="inputDisponibilidadeSegunda">QUI</label>
           <ng-multiselect-dropdown 
-            name="unidadesAcademicas" 
+            name="matutinoQuinta" 
+            formControlName="matutinoQuinta" 
             [placeholder]="'Selecione ...'" 
             [data]="unidadesAcademicas"
-            [disabled]="'disabled'"  
             [settings]="dropdownSettings" 
             (onSelect)="onItemSelect($event)"
             (onSelectAll)="onSelectAll($event)">
@@ -72,10 +72,10 @@
         <div class="form-group col-sm-2">
           <label for="inputDisponibilidadeSegunda">SEX</label>
           <ng-multiselect-dropdown 
-            name="unidadesAcademicas" 
+            name="matutinoSexta" 
+            formControlName="matutinoSexta" 
             [placeholder]="'Selecione ...'" 
             [data]="unidadesAcademicas"
-            [disabled]="'disabled'"  
             [settings]="dropdownSettings" 
             (onSelect)="onItemSelect($event)"
             (onSelectAll)="onSelectAll($event)">
@@ -85,10 +85,10 @@
         <div class="form-group col-sm-2">
           <label for="inputDisponibilidadeSegunda">SÁB</label>
           <ng-multiselect-dropdown 
-            name="unidadesAcademicas" 
+            name="matutinoSabado" 
+            formControlName="matutinoSabado" 
             [placeholder]="'Selecione ...'" 
             [data]="unidadesAcademicas"
-            [disabled]="'disabled'"  
             [settings]="dropdownSettings" 
             (onSelect)="onItemSelect($event)"
             (onSelectAll)="onSelectAll($event)">
@@ -106,10 +106,10 @@
           <div class="form-group col-sm-2">
             <label for="inputDisponibilidadeSegunda">SEG</label>
             <ng-multiselect-dropdown 
-              name="unidadesAcademicas" 
+              name="noturnoSegunda" 
+              formControlName="noturnoSegunda" 
               [placeholder]="'Selecione ...'" 
               [data]="unidadesAcademicas"
-              [disabled]="'disabled'"  
               [settings]="dropdownSettings" 
               (onSelect)="onItemSelect($event)"
               (onSelectAll)="onSelectAll($event)">
@@ -119,10 +119,10 @@
           <div class="form-group col-sm-2">
             <label for="inputDisponibilidadeSegunda">TER</label>
             <ng-multiselect-dropdown 
-              name="unidadesAcademicas" 
+              name="noturnoTerca" 
+              formControlName="noturnoTerca" 
               [placeholder]="'Selecione ...'" 
               [data]="unidadesAcademicas"
-              [disabled]="'disabled'"  
               [settings]="dropdownSettings" 
               (onSelect)="onItemSelect($event)"
               (onSelectAll)="onSelectAll($event)">
@@ -132,10 +132,10 @@
           <div class="form-group col-sm-2">
             <label for="inputDisponibilidadeSegunda">QUA</label>
             <ng-multiselect-dropdown 
-              name="unidadesAcademicas" 
+              name="noturnoQuarta" 
+              formControlName="noturnoQuarta" 
               [placeholder]="'Selecione ...'" 
               [data]="unidadesAcademicas"
-              [disabled]="'disabled'"  
               [settings]="dropdownSettings" 
               (onSelect)="onItemSelect($event)"
               (onSelectAll)="onSelectAll($event)">
@@ -145,10 +145,10 @@
           <div class="form-group col-sm-2">
             <label for="inputDisponibilidadeSegunda">QUI</label>
             <ng-multiselect-dropdown 
-              name="unidadesAcademicas" 
+              name="noturnoQuinta" 
+              formControlName="noturnoQuinta" 
               [placeholder]="'Selecione ...'" 
               [data]="unidadesAcademicas"
-              [disabled]="'disabled'"  
               [settings]="dropdownSettings" 
               (onSelect)="onItemSelect($event)"
               (onSelectAll)="onSelectAll($event)">
@@ -158,10 +158,10 @@
           <div class="form-group col-sm-2">
             <label for="inputDisponibilidadeSegunda">SEX</label>
             <ng-multiselect-dropdown 
-              name="unidadesAcademicas" 
+              name="noturnoSexta" 
+              formControlName="noturnoSexta" 
               [placeholder]="'Selecione ...'" 
               [data]="unidadesAcademicas"
-              [disabled]="'disabled'"  
               [settings]="dropdownSettings" 
               (onSelect)="onItemSelect($event)"
               (onSelectAll)="onSelectAll($event)">
@@ -172,8 +172,8 @@
 
         <div class="form-group row text-right">
           <div class="col-md-12">
-            <button type="button" class="btn btn-outline-primary">
-              <i class="fas fa-save"></i> Cadastrar disponibilidades
+            <button type="submit" class="btn btn-outline-primary">
+              <i class="fas fa-save"></i> Salvar
             </button>
           </div>
         </div>

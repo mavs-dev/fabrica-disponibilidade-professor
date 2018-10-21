@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Semestre } from 'src/app/interfaces/semestre';
 
 @Component({
   selector: 'pj-disponibilidades',
@@ -8,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class DisponibilidadesComponent implements OnInit {
 
+  semestre: Semestre;
   disponibilidadeForm: FormGroup;
   unidadesAcademicas = [];
   selectedItems = [];
@@ -16,8 +18,26 @@ export class DisponibilidadesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.semestre = {
+      id: 0,
+      semestreReferencia: 1,
+      anoReferencia: 2019,
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
+    };
     this.disponibilidadeForm = this.formBuilder.group({
-
+      matutinoSegunda: [null],
+      matutinoTerca: [null],
+      matutinoQuarta: [null],
+      matutinoQuinta: [null],
+      matutinoSexta: [null],
+      matutinoSabado: [null],
+      noturnoSegunda: [null],
+      noturnoTerca: [null],
+      noturnoQuarta: [null],
+      noturnoQuinta: [null],
+      noturnoSexta: [null]
     });
     this.unidadesAcademicas = [
       { item_id: 1, item_text: 'Sobradinho' },
@@ -45,7 +65,7 @@ export class DisponibilidadesComponent implements OnInit {
     console.log(items);
   }
 
-  teste() {
-
+  salvar() {
+    console.log('Formulário', this.disponibilidadeForm.controls);
   }
 }
