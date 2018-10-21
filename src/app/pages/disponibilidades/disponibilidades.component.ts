@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'pj-disponibilidades',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisponibilidadesComponent implements OnInit {
 
+  disponibilidadeForm: FormGroup;
   unidadesAcademicas = [];
   selectedItems = [];
   dropdownSettings = {};
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.disponibilidadeForm = this.formBuilder.group({
+
+    });
     this.unidadesAcademicas = [
       { item_id: 1, item_text: 'Sobradinho' },
       { item_id: 2, item_text: 'Ceilândia' },
@@ -40,4 +45,7 @@ export class DisponibilidadesComponent implements OnInit {
     console.log(items);
   }
 
+  teste() {
+
+  }
 }

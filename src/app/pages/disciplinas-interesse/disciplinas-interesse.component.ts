@@ -43,4 +43,7 @@ export class DisciplinasInteresseComponent implements OnInit {
     console.log(items);
   }
 
+  teste() {
+
+  }
 }

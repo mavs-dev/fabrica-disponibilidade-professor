@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TextAreaComponent } from './component/inputs/text-area/text-area.component';
+import { DisciplinaInteresseItemComponent } from './component/disciplina-interesse-item/disciplina-interesse-item.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TextAreaComponent } from './component/inputs/text-area/text-area.compon
     FooterComponent,
     HomeComponent,
     DisciplinasInteresseComponent,
+    DisciplinaInteresseItemComponent,
     ModalComponent,
     DisponibilidadesComponent,
     FormularioComponent,

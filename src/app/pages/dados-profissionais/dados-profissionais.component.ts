@@ -77,6 +77,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
   }
 
   salvar() {
+    // tslint:disable-next-line:prefer-const
     let curriculoLattes = {
       id: null,
       dataAtualizacao: this.dadosProfissionaisForm.get('curriculoLattesDataAtt').value,
@@ -84,6 +85,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       publicacoes: this.dadosProfissionaisForm.get('publicacoes').value,
       dadosProfissionais: { id: null }
     };
+    // tslint:disable-next-line:prefer-const
     let dadosProfissionais = {
       id: null,
       graduacao: this.dadosProfissionaisForm.get('graduacao').value,
