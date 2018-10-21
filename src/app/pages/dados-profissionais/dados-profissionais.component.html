@@ -1,13 +1,13 @@
 <div class="container shadow p-3 mb-5 bg-white rounded">
 
   <div class="card-header mb-4">
-    <b>CADASTRO DE DADOS PESSOAIS</b>
+    <b>CADASTRO DE DADOS PROFISSIONAIS</b>
   </div>
   <form [formGroup]="dadosProfissionaisForm" (ngSubmit)="salvar()">
     <div class="row">
       <div class="col-md-8">
         <pj-input-text (formControl)="addFormControl('graduacao', $event)" label="Graduação" name="graduacao" icone="fa-user-graduate"
-          placeText="Digite o curso de sua graduação"></pj-input-text>
+          placeText="Digite o nome do curso"></pj-input-text>
       </div>
       <div class="col-md-4">
         <pj-input-date (formControl)="addFormControl('dataConclusao', $event)" label="Data de conclusão" name="dataConclusao"></pj-input-date>
@@ -21,7 +21,7 @@
             <label class="input-group-text" for="inputNivelGraduacao"><i class="fas fa-graduation-cap"></i></label>
           </div>
           <select formControlName="nivelGraduacao" class="custom-select" id="inputNivelGraduacao">
-            <option value="">Escolha o nível da maior titulação obtida...</option>
+            <option value="">Selecione o nível da maior titulação obtida...</option>
             <option value="GRADUACAO">Graduação</option>
             <option value="POS_GRADUACAO">Pós-Graduação</option>
             <option value="MESTRADO">Mestrado</option>
@@ -88,7 +88,7 @@
       </div>
       <div class="col-md-4 text-right">
         <button [disabled]="dadosProfissionaisForm.invalid" type="submit" class="btn btn-outline-primary">
-          <i class="fas fa-save"></i> Salvar
+          <i class="fas fa-save"></i> Cadastrar
         </button>
       </div>
     </div>
