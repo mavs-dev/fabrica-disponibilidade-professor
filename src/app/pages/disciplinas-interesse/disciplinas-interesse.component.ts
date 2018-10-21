@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'pj-disciplinas-interesse',
@@ -14,9 +14,10 @@ export class DisciplinasInteresseComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.interesseForm = this.formBuilder.group({});
     this.unidadesAcademicas = [
       { item_id: 1, item_text: 'Sobradinho' },
       { item_id: 2, item_text: 'Ceilândia' },
