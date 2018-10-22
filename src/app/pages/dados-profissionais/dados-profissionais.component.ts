@@ -50,19 +50,21 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
   }
 
   preencherFormulario() {
-    this.dadosProfissionaisForm.get('graduacao').setValue(this.usuario.dadosProfissionais.graduacao);
-    this.dadosProfissionaisForm.get('dataConclusao').setValue(this.usuario.dadosProfissionais.dataConclusao);
-    this.dadosProfissionaisForm.get('nivelGraduacao').setValue(this.usuario.dadosProfissionais.maiorTitulacaoObtida);
-    this.dadosProfissionaisForm.get('titulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.titulacaoEmAndamento);
-    // tslint:disable-next-line:max-line-length
-    this.dadosProfissionaisForm.get('descricaoTitulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.descricaoTitulacaoEmAndamento);
-    this.dadosProfissionaisForm.get('principalAtuacaoProfissional').setValue(this.usuario.dadosProfissionais.principalAtuacaoProfissional);
-    this.dadosProfissionaisForm.get('tempoExpProfissional').setValue(this.usuario.dadosProfissionais.tempoExpProfissional);
-    this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior);
-    this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').setValue(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica);
-    this.dadosProfissionaisForm.get('curriculoLattesDataAtt').setValue(this.usuario.dadosProfissionais.curriculoLattes.dataAtualizacao);
-    this.dadosProfissionaisForm.get('curriculoLattesUrl').setValue(this.usuario.dadosProfissionais.curriculoLattes.url);
-    this.dadosProfissionaisForm.get('publicacoes').setValue(this.usuario.dadosProfissionais.curriculoLattes.publicacoes);
+    if (this.usuario.dadosProfissionais) {
+      this.dadosProfissionaisForm.get('graduacao').setValue(this.usuario.dadosProfissionais.graduacao);
+      this.dadosProfissionaisForm.get('dataConclusao').setValue(this.usuario.dadosProfissionais.dataConclusao);
+      this.dadosProfissionaisForm.get('nivelGraduacao').setValue(this.usuario.dadosProfissionais.maiorTitulacaoObtida);
+      this.dadosProfissionaisForm.get('titulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.titulacaoEmAndamento);
+      // tslint:disable-next-line:max-line-length
+      this.dadosProfissionaisForm.get('descricaoTitulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.descricaoTitulacaoEmAndamento);
+      this.dadosProfissionaisForm.get('principalAtuacaoProfissional').setValue(this.usuario.dadosProfissionais.principalAtuacaoProfissional);
+      this.dadosProfissionaisForm.get('tempoExpProfissional').setValue(this.usuario.dadosProfissionais.tempoExpProfissional);
+      this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior);
+      this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').setValue(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica);
+      this.dadosProfissionaisForm.get('curriculoLattesDataAtt').setValue(this.usuario.dadosProfissionais.curriculoLattes.dataAtualizacao);
+      this.dadosProfissionaisForm.get('curriculoLattesUrl').setValue(this.usuario.dadosProfissionais.curriculoLattes.url);
+      this.dadosProfissionaisForm.get('publicacoes').setValue(this.usuario.dadosProfissionais.curriculoLattes.publicacoes);
+    }
   }
 
   curriculoLattesModificado(curriculoLattes: any) {

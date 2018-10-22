@@ -6,6 +6,7 @@ export interface Disponibilidade {
     turno: string;
     diaDaSemana: string;
     semestre: Semestre;
+    professor: any;
     dataHoraCadastro: any;
     dataHoraAlteracao: any;
     dataHoraExclusao: any;

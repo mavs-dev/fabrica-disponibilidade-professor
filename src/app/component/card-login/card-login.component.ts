@@ -24,7 +24,7 @@ export class CardLoginComponent implements OnInit {
   configurarFormulario() {
     this.loginForm = this.formBuilder.group({
       // TODO retirar [0-9]
-      inputEmail: [null, [Validators.required, Validators.pattern(/^[a-z]+\.[a-z]+[0-9?]+?$/i)]],
+      inputEmail: [null, [Validators.required, Validators.pattern(/^[a-z]+\.[a-z]+[0-9]?$/i)]],
       inputSenha: [null, [Validators.required]]
     });
   }

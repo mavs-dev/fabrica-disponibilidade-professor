@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Semestre } from 'src/app/interfaces/semestre';
+import { UnidadeAcademicaService } from 'src/app/services/unidade-academica.service';
+import { SemestreService } from 'src/app/services/semestre.service';
+import { DisponibilidadeService } from 'src/app/services/disponibilidade.service';
+import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
+import { Disponibilidade } from 'src/app/interfaces/disponibilidade';
 
 @Component({
   selector: 'pj-disponibilidades',
@@ -11,21 +16,19 @@ export class DisponibilidadesComponent implements OnInit {
 
   semestre: Semestre;
   disponibilidadeForm: FormGroup;
-  unidadesAcademicas = [];
-  selectedItems = [];
+  unidadesAcademicas: UnidadeAcademica[];
+  disponibilidadeInformada: Disponibilidade[] = [];
   dropdownSettings = {};
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private unidadeAcademicaService: UnidadeAcademicaService,
+    private semestreService: SemestreService,
+    private disponibilidadeService: DisponibilidadeService
+  ) { }
 
   ngOnInit() {
-    this.semestre = {
-      id: 0,
-      semestreReferencia: 1,
-      anoReferencia: 2019,
-      dataHoraCadastro: null,
-      dataHoraAlteracao: null,
-      dataHoraExclusao: null
-    };
+    this.carregarUnidadesAcademicas();
+    this.carregarSemestre();
     this.disponibilidadeForm = this.formBuilder.group({
       matutinoSegunda: [null],
       matutinoTerca: [null],
@@ -39,18 +42,10 @@ export class DisponibilidadesComponent implements OnInit {
       noturnoQuinta: [null],
       noturnoSexta: [null]
     });
-    this.unidadesAcademicas = [
-      { item_id: 1, item_text: 'Sobradinho' },
-      { item_id: 2, item_text: 'Ceilândia' },
-      { item_id: 3, item_text: 'Taguatinga' },
-      { item_id: 4, item_text: 'Tag. Norte' },
-      { item_id: 5, item_text: 'Guará' }
-    ];
-
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'nome',
       selectAllText: 'Selecionar todos',
       unSelectAllText: 'Desmarcar todos',
       itemsShowLimit: 5,
@@ -59,13 +54,86 @@ export class DisponibilidadesComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    console.log(item);
   }
   onSelectAll(items: any) {
-    console.log(items);
+  }
+
+  carregarUnidadesAcademicas() {
+    this.unidadeAcademicaService.getAll().subscribe(data => {
+      if (data) {
+        this.unidadesAcademicas = data;
+      }
+    });
+  }
+
+  carregarSemestre() {
+    this.semestreService.getAll().subscribe(data => { if (data) { this.semestre = data.pop(); } });
   }
 
   salvar() {
-    console.log('Formulário', this.disponibilidadeForm.controls);
+    if (this.disponibilidadeInformada.length === 0) {
+      this.montarDisponibilidadeInformada();
+    } else {
+      this.atualizarDisponibilidadeInformada();
+    }
+  }
+
+  montarDisponibilidadeInformada() {
+    this.montarDiaPorTurno('matutino', 'Segunda');
+    this.montarDiaPorTurno('matutino', 'Terca');
+    this.montarDiaPorTurno('matutino', 'Quarta');
+    this.montarDiaPorTurno('matutino', 'Quinta');
+    this.montarDiaPorTurno('matutino', 'Sexta');
+    this.montarDiaPorTurno('matutino', 'Sabado');
+
+    this.montarDiaPorTurno('noturno', 'Segunda');
+    this.montarDiaPorTurno('noturno', 'Terca');
+    this.montarDiaPorTurno('noturno', 'Quarta');
+    this.montarDiaPorTurno('noturno', 'Quinta');
+    this.montarDiaPorTurno('noturno', 'Sexta');
+
+    this.disponibilidadeInformada.forEach((value) => {
+      this.disponibilidadeService.save(value).subscribe(data => {
+        console.log(data);
+      });
+    });
+  }
+
+  montarDiaPorTurno(turno: string, dia: string) {
+    if (this.disponibilidadeForm.get(turno + dia).value) {
+      this.disponibilidadeInformada.push(
+        this.criarObjetoDisponibilidade(this.disponibilidadeForm.get(turno + dia).value, turno.toUpperCase(), dia.toUpperCase())
+      );
+    }
+  }
+
+  atualizarDisponibilidadeInformada() {
+
+  }
+
+  criarObjetoDisponibilidade(unidadesSelecionadas: Array<never>, turno: string, diaDaSemana: string): Disponibilidade {
+    // tslint:disable-next-line:prefer-const
+    let disponibilidade: Disponibilidade = {
+      id: null,
+      unidadesAcademicas: [],
+      turno: turno,
+      diaDaSemana: diaDaSemana,
+      semestre: this.semestre,
+      professor: JSON.parse(sessionStorage.getItem('usuario')),
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
+    };
+    unidadesSelecionadas.forEach((value) => {
+      disponibilidade.unidadesAcademicas.push({
+        id: value['id'],
+        nome: null,
+        sigla: null,
+        dataHoraCadastro: null,
+        dataHoraAlteracao: null,
+        dataHoraExclusao: null
+      });
+    });
+    return disponibilidade;
   }
 }
