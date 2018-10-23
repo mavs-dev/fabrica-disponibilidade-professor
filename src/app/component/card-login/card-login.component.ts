@@ -31,16 +31,16 @@ export class CardLoginComponent implements OnInit {
 
   login () {
     this.mensagemErro.emit('');
-    const usuario = {
+    const usuario: Usuario = {
       id: null,
       nome: null,
       email: this.loginForm.get('inputEmail').value + '@projecao.br',
       senha: this.loginForm.get('inputSenha').value,
-      dataHoraCadastro: null,
-      dataHoraAlteracao: null,
-      dataHoraExclusao: null,
       perfil: null,
       dadosProfissionais: null,
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
     };
     this.service.login(usuario).subscribe(data => {
       if (data && !data.mensagemErro) {
