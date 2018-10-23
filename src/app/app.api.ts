@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment.prod';
 
 const SERVER_DEV = 'http://localhost:8080';
-const SERVER_PROD = 'http://localhost:8080';
+const SERVER_PROD = 'http://fabrica.projecao.br/api/disponibilidade/usuario';
 
 const API_HOST = environment.production ? SERVER_PROD : SERVER_DEV;
 export const API_SERVICE_CURRICULO_LATTES = `${API_HOST}/curriculo-lattes`;
