@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { UnidadeAcademicaService } from 'src/app/services/unidade-academica.service';
+import { DisciplinaService } from 'src/app/services/disciplina.service';
+import { DisciplinaInteresseItem } from 'src/app/interfaces/disciplina-interesse-item';
+import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
 
 @Component({
   selector: 'pj-disciplinas-interesse',
@@ -8,23 +12,41 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class DisciplinasInteresseComponent implements OnInit {
 
-  interesseForm: FormGroup;
+  DisciplinasDeinteresseForm: FormGroup;
 
-  unidadesAcademicas = [];
+  unidadesAcademicas: UnidadeAcademica[];
   selectedItems = [];
   dropdownSettings = {};
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private unidadeAcademicaService: UnidadeAcademicaService,
+    private disciplinaService: DisciplinaService
+  ) { }
 
   ngOnInit() {
-    this.interesseForm = this.formBuilder.group({});
-    this.unidadesAcademicas = [
-      { item_id: 1, item_text: 'Sobradinho' },
-      { item_id: 2, item_text: 'Ceilândia' },
-      { item_id: 3, item_text: 'Taguatinga' },
-      { item_id: 4, item_text: 'Tag. Norte' },
-      { item_id: 5, item_text: 'Guará' }
-    ];
+    this.carregarUnidadesAcademicas();
+    this.DisciplinasDeinteresseForm = this.formBuilder.group({
+      // MULTI-SELECTS
+      unidadeAcademicaDisciplina1: [null],
+      unidadeAcademicaDisciplina2: [null],
+      unidadeAcademicaDisciplina3: [null],
+      unidadeAcademicaDisciplina4: [null],
+      unidadeAcademicaDisciplina5: [null],
+      unidadeAcademicaDisciplina6: [null],
+      unidadeAcademicaDisciplina7: [null],
+      unidadeAcademicaDisciplina8: [null],
+      unidadeAcademicaDisciplina9: [null],
+      unidadeAcademicaDisciplina10: [null],
+    });
+
+    // this.unidadesAcademicas = [
+    //   { item_id: 1, item_text: 'Sobradinho' },
+    //   { item_id: 2, item_text: 'Ceilândia' },
+    //   { item_id: 3, item_text: 'Taguatinga' },
+    //   { item_id: 4, item_text: 'Tag. Norte' },
+    //   { item_id: 5, item_text: 'Guará' }
+    // ];
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -37,6 +59,18 @@ export class DisciplinasInteresseComponent implements OnInit {
     };
   }
 
+  carregarUnidadesAcademicas() {
+    this.unidadeAcademicaService.getAll().subscribe(data => {
+      if (data) {
+        this.unidadesAcademicas = data;
+      }
+    });
+  }
+
+  addFormControl(name: string, formControl: FormControl) {
+    this.DisciplinasDeinteresseForm.addControl(name, formControl);
+  }
+
   onItemSelect(item: any) {
     console.log(item);
   }
@@ -45,6 +79,6 @@ export class DisciplinasInteresseComponent implements OnInit {
   }
 
   salvar() {
-
+    // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
   }
 }
