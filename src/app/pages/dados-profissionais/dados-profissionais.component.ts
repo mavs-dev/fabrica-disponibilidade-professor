@@ -62,9 +62,11 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       this.dadosProfissionaisForm.get('tempoExpProfissional').setValue(this.usuario.dadosProfissionais.tempoExpProfissional);
       this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior);
       this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').setValue(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica);
-      this.dadosProfissionaisForm.get('curriculoLattesDataAtt').setValue(this.usuario.dadosProfissionais.curriculoLattes.dataAtualizacao);
-      this.dadosProfissionaisForm.get('curriculoLattesUrl').setValue(this.usuario.dadosProfissionais.curriculoLattes.url);
-      this.dadosProfissionaisForm.get('publicacoes').setValue(this.usuario.dadosProfissionais.curriculoLattes.publicacoes);
+      if (this.usuario.dadosProfissionais.curriculoLattes) {
+        this.dadosProfissionaisForm.get('curriculoLattesDataAtt').setValue(this.usuario.dadosProfissionais.curriculoLattes.dataAtualizacao);
+        this.dadosProfissionaisForm.get('curriculoLattesUrl').setValue(this.usuario.dadosProfissionais.curriculoLattes.url);
+        this.dadosProfissionaisForm.get('publicacoes').setValue(this.usuario.dadosProfissionais.curriculoLattes.publicacoes);
+      }
     }
   }
 
@@ -111,24 +113,41 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       dataHoraExclusao: null
     };
     if (this.usuario.dadosProfissionais) {
-      this.dadosProfissionaisService.update(this.usuario.dadosProfissionais.id, dadosProfissionais).subscribe(data => {
+      curriculoLattes.dadosProfissionais.id = this.usuario.dadosProfissionais.id;
+      console.log('Entrei para atualizar os dados profissionais', dadosProfissionais);
+      this.dadosProfissionaisService.update(this.usuario.dadosProfissionais.id, dadosProfissionais).subscribe(() => {
         this.mensagem = 'Dados profissionais alterados com sucesso!';
         setTimeout(() => {
           this.mensagem = null;
         }, 5000);
       });
-      if (this.curriculoLattesModificado(curriculoLattes)) {
+      if (this.usuario.dadosProfissionais.curriculoLattes && this.curriculoLattesModificado(curriculoLattes)) {
+        console.log('Entrei para atualizar o curriculo', curriculoLattes);
         this.curriculoLattesService.update(this.usuario.dadosProfissionais.curriculoLattes.id, curriculoLattes).subscribe(dataC => {
           this.mensagem = 'Dados profissionais alterados com sucesso!';
+          console.log('Retorno gravar curriculo', dataC);
           setTimeout(() => {
             this.mensagem = null;
           }, 5000);
         });
+      } else {
+        console.log('Entrei para salvar o curriculo', curriculoLattes);
+        this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
+          if (dataT) {
+            this.mensagem = 'Dados profissionais salvos com sucesso!';
+            setTimeout(() => {
+              this.mensagem = null;
+            }, 5000);
+          }
+        });
       }
     } else {
+      console.log('Entrei para salvar os dados profissionais', dadosProfissionais);
       this.dadosProfissionaisService.save(dadosProfissionais).subscribe(data => {
         if (data && data.id) {
+          console.log('Curriculo lattes antes de setar id do dados profissionais XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', curriculoLattes);
           curriculoLattes.dadosProfissionais.id = data.id;
+          console.log('Curriculo lattes antes de gravar XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', curriculoLattes);
           this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
             if (dataT) {
               this.mensagem = 'Dados profissionais salvos com sucesso!';

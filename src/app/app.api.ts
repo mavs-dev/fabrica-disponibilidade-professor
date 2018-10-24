@@ -1,4 +1,4 @@
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 const SERVER_DEV = 'http://localhost:8080';
 const SERVER_PROD = 'http://fabrica.projecao.br/api/disponibilidade';

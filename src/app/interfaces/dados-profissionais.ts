@@ -1,4 +1,5 @@
 import { CurriculoLattes } from './curriculo-lattes';
+import { Usuario } from './usuario';
 
 export interface DadosProfissionais {
     id: number;
@@ -11,8 +12,8 @@ export interface DadosProfissionais {
     tempoExpProfissional: number;
     tempoExpMagisterioSuperior: number;
     tempoExpDocenciaEdBasica: number;
-    curriculoLattes: any;
-    professor: any;
+    curriculoLattes: CurriculoLattes;
+    professor: Usuario;
     dataHoraCadastro: any;
     dataHoraAlteracao: any;
     dataHoraExclusao: any;
