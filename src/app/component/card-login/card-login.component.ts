@@ -38,6 +38,7 @@ export class CardLoginComponent implements OnInit {
       senha: this.loginForm.get('inputSenha').value,
       perfil: null,
       dadosProfissionais: null,
+      disponibilidades: null,
       dataHoraCadastro: null,
       dataHoraAlteracao: null,
       dataHoraExclusao: null
