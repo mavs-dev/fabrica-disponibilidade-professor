@@ -52,6 +52,18 @@ export class DisciplinasInteresseComponent implements OnInit {
       unidadeAcademicaDisciplina8: [null],
       unidadeAcademicaDisciplina9: [null],
       unidadeAcademicaDisciplina10: [null],
+
+      // DISCIPLINAS
+      inputNomeDisciplina1: null,
+      inputNomeDisciplina2: null,
+      inputNomeDisciplina3: null,
+      inputNomeDisciplina4: null,
+      inputNomeDisciplina5: null,
+      inputNomeDisciplina6: null,
+      inputNomeDisciplina7: null,
+      inputNomeDisciplina8: null,
+      inputNomeDisciplina9: null,
+      inputNomeDisciplina10: null,
     });
 
     // PARÂMETROS DO COMPONENTE MULTI-SELECT
@@ -93,11 +105,12 @@ export class DisciplinasInteresseComponent implements OnInit {
   salvar() {
     // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
     for (let i = 1; i <= 10; i++) {
+      console.log(i);
       if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
-      && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
+        && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
         this.disciplinaService.save(this.criarObjetoDisciplina(i)).subscribe(data => {
           if (data) {
-            this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe( dataI => {
+            this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
               console.log('Cadastrou interesse -------------------', dataI);
             });
           }
@@ -135,7 +148,7 @@ export class DisciplinasInteresseComponent implements OnInit {
 
   getUnidadesAcademicasSelecionadas(numeroCampo): UnidadeAcademica[] {
     const unidadesSelecionadas = new Array<UnidadeAcademica>();
-    const unidadesString: Array<never> = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value;
+    const unidadesString: Array<never> = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value;
     unidadesString.forEach((value) => {
       unidadesSelecionadas.push({
         id: value['id'],
@@ -148,4 +161,12 @@ export class DisciplinasInteresseComponent implements OnInit {
     });
     return unidadesSelecionadas;
   }
+
+  // preencherFormulario() {
+  //   if (this.usuario.disciplinasDeInteresse) {
+  //     disciplinasDeInteresse.forEach(element => {
+  //       this.usuario.disciplinasDeInteresse
+  //     });
+  //   }
+  // }
 }
