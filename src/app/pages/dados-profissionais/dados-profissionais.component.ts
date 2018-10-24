@@ -57,6 +57,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       this.dadosProfissionaisForm.get('titulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.titulacaoEmAndamento);
       // tslint:disable-next-line:max-line-length
       this.dadosProfissionaisForm.get('descricaoTitulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.descricaoTitulacaoEmAndamento);
+      // tslint:disable-next-line:max-line-length
       this.dadosProfissionaisForm.get('principalAtuacaoProfissional').setValue(this.usuario.dadosProfissionais.principalAtuacaoProfissional);
       this.dadosProfissionaisForm.get('tempoExpProfissional').setValue(this.usuario.dadosProfissionais.tempoExpProfissional);
       this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior);

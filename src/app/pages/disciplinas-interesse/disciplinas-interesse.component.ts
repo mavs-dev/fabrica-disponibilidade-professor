@@ -15,7 +15,6 @@ export class DisciplinasInteresseComponent implements OnInit {
   DisciplinasDeinteresseForm: FormGroup;
 
   unidadesAcademicas: UnidadeAcademica[];
-  selectedItems = [];
   dropdownSettings = {};
 
   constructor(
@@ -40,18 +39,20 @@ export class DisciplinasInteresseComponent implements OnInit {
       unidadeAcademicaDisciplina10: [null],
     });
 
-    // this.unidadesAcademicas = [
-    //   { item_id: 1, item_text: 'Sobradinho' },
-    //   { item_id: 2, item_text: 'Ceilândia' },
-    //   { item_id: 3, item_text: 'Taguatinga' },
-    //   { item_id: 4, item_text: 'Tag. Norte' },
-    //   { item_id: 5, item_text: 'Guará' }
-    // ];
+    // OPTIONS DO MULTI-SELECT DE ACORDO COM A INTERFACE UNIDADE ACADÊMICA
+    this.unidadesAcademicas = [
+      { id: 1, nome: 'Sobradinho', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
+      { id: 2, nome: 'Ceilândia', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
+      { id: 3, nome: 'Taguatinga', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
+      { id: 4, nome: 'Tag. Norte', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
+      { id: 5, nome: 'Guará', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null }
+    ];
 
+    // PARÂMETROS DO COMPONENTE MULTI-SELECT
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'nome',
       selectAllText: 'Selecionar todos',
       unSelectAllText: 'Desmarcar todos',
       itemsShowLimit: 5,
@@ -59,6 +60,17 @@ export class DisciplinasInteresseComponent implements OnInit {
     };
   }
 
+  // PRINTA O ITEM SELECIONADO NO MULTI-SELECT
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+
+  // PRINTA TODOS OS ITENS AO PRESSIONAR SELECIONAR TODOS NO MULTI-SELECT
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
+  // CARREGA AS UNIDADES ACADÊMICAS
   carregarUnidadesAcademicas() {
     this.unidadeAcademicaService.getAll().subscribe(data => {
       if (data) {
@@ -67,18 +79,17 @@ export class DisciplinasInteresseComponent implements OnInit {
     });
   }
 
+  // ADICIONA OS VALORES DOS INPUTS TEXT
   addFormControl(name: string, formControl: FormControl) {
     this.DisciplinasDeinteresseForm.addControl(name, formControl);
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
-
   salvar() {
     // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
+  }
+
+  // CRIA O OBJETO DE DISCIPLINAS DE INTERESSE
+  criarObjetoDisciplinasInteresse() {
+
   }
 }

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card shadow-lg">
   <div class="card-img-top text-center">
     <pj-image-projecao-responsive></pj-image-projecao-responsive>
   </div>
@@ -19,14 +19,14 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="senha"><i class="fas fa-key"></i></span>
         </div>
-        <input formControlName="inputSenha" type="password" class="form-control" placeholder="Digite sua senha" aria-label="Digite sua senha"
-          aria-describedby="senha">
+        <input formControlName="inputSenha" type="password" class="form-control" placeholder="Digite sua senha"
+          aria-label="Digite sua senha" aria-describedby="senha">
       </div>
-      <button class="btn btn-cor-padrao col-4" [disabled]="loginForm.invalid" type="submit">Entrar</button><br>
+      <button class="btn btn-cor-padrao col-4" [disabled]="loginForm.invalid" type="submit">Entrar</button><br><br>
       <a href="#">Esqueci minha senha</a>
     </form>
   </div>
   <div class="card-footer text-muted text-center font-weight-light">
-    <i class="far fa-copyright"></i> 2018 Fábrica de Software - UniPROJEÇÃO - Campus II
+    <i class="far fa-copyright fa-xs"></i> <small> Fábrica de Software - Campus II - Beta Software v0.0.0</small>
   </div>
 </div>
