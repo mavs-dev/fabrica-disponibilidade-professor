@@ -4,6 +4,12 @@ import { UnidadeAcademicaService } from 'src/app/services/unidade-academica.serv
 import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { DisciplinaInteresseItem } from 'src/app/interfaces/disciplina-interesse-item';
 import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
+import { Disciplina } from 'src/app/interfaces/disciplina';
+import { InteresseService } from 'src/app/services/interesse.service';
+import { Interesse } from 'src/app/interfaces/interesse';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { Semestre } from 'src/app/interfaces/semestre';
+import { SemestreService } from 'src/app/services/semestre.service';
 
 @Component({
   selector: 'pj-disciplinas-interesse',
@@ -13,18 +19,27 @@ import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
 export class DisciplinasInteresseComponent implements OnInit {
 
   DisciplinasDeinteresseForm: FormGroup;
-
+  usuario: Usuario;
+  semestre: Semestre;
   unidadesAcademicas: UnidadeAcademica[];
   dropdownSettings = {};
 
   constructor(
     private formBuilder: FormBuilder,
     private unidadeAcademicaService: UnidadeAcademicaService,
-    private disciplinaService: DisciplinaService
+    private disciplinaService: DisciplinaService,
+    private interesseService: InteresseService,
+    private semestreService: SemestreService
   ) { }
 
   ngOnInit() {
     this.carregarUnidadesAcademicas();
+    this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    this.semestreService.getAll().subscribe(data => {
+      if (data) {
+        this.semestre = data[0];
+      }
+    });
     this.DisciplinasDeinteresseForm = this.formBuilder.group({
       // MULTI-SELECTS
       unidadeAcademicaDisciplina1: [null],
@@ -38,15 +53,6 @@ export class DisciplinasInteresseComponent implements OnInit {
       unidadeAcademicaDisciplina9: [null],
       unidadeAcademicaDisciplina10: [null],
     });
-
-    // OPTIONS DO MULTI-SELECT DE ACORDO COM A INTERFACE UNIDADE ACADÊMICA
-    this.unidadesAcademicas = [
-      { id: 1, nome: 'Sobradinho', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
-      { id: 2, nome: 'Ceilândia', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
-      { id: 3, nome: 'Taguatinga', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
-      { id: 4, nome: 'Tag. Norte', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null },
-      { id: 5, nome: 'Guará', sigla: null, dataHoraCadastro: null, dataHoraAlteracao: null, dataHoraExclusao: null }
-    ];
 
     // PARÂMETROS DO COMPONENTE MULTI-SELECT
     this.dropdownSettings = {
@@ -86,10 +92,60 @@ export class DisciplinasInteresseComponent implements OnInit {
 
   salvar() {
     // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
+    for (let i = 1; i <= 10; i++) {
+      if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
+      && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
+        this.disciplinaService.save(this.criarObjetoDisciplina(i)).subscribe(data => {
+          if (data) {
+            this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe( dataI => {
+              console.log('Cadastrou interesse -------------------', dataI);
+            });
+          }
+        });
+      }
+    }
   }
 
   // CRIA O OBJETO DE DISCIPLINAS DE INTERESSE
-  criarObjetoDisciplinasInteresse() {
+  criarObjetoDisciplina(numeroDisciplina): Disciplina {
+    const disciplina: Disciplina = {
+      id: null,
+      descricao: this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${numeroDisciplina}`).value,
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
+    };
+    return disciplina;
+  }
 
+  criarObjetoInteresse(disciplina: Disciplina, unidadesAcademicas: UnidadeAcademica[], numeroPrioridade: number): Interesse {
+    const interesse: Interesse = {
+      id: null,
+      disciplina: disciplina,
+      professor: this.usuario,
+      prioridade: numeroPrioridade,
+      semestre: this.semestre,
+      unidadesAcademicas: unidadesAcademicas,
+      dataHoraCadastro: null,
+      dataHoraAlteracao: null,
+      dataHoraExclusao: null
+    };
+    return interesse;
+  }
+
+  getUnidadesAcademicasSelecionadas(numeroCampo): UnidadeAcademica[] {
+    const unidadesSelecionadas = new Array<UnidadeAcademica>();
+    const unidadesString: Array<never> = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value;
+    unidadesString.forEach((value) => {
+      unidadesSelecionadas.push({
+        id: value['id'],
+        nome: null,
+        sigla: null,
+        dataHoraCadastro: null,
+        dataHoraAlteracao: null,
+        dataHoraExclusao: null
+      });
+    });
+    return unidadesSelecionadas;
   }
 }

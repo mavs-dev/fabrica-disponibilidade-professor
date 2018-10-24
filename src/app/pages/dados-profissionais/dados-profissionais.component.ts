@@ -114,7 +114,6 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
     };
     if (this.usuario.dadosProfissionais) {
       curriculoLattes.dadosProfissionais.id = this.usuario.dadosProfissionais.id;
-      console.log('Entrei para atualizar os dados profissionais', dadosProfissionais);
       this.dadosProfissionaisService.update(this.usuario.dadosProfissionais.id, dadosProfissionais).subscribe(() => {
         this.mensagem = 'Dados profissionais alterados com sucesso!';
         setTimeout(() => {
@@ -125,13 +124,11 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
         console.log('Entrei para atualizar o curriculo', curriculoLattes);
         this.curriculoLattesService.update(this.usuario.dadosProfissionais.curriculoLattes.id, curriculoLattes).subscribe(dataC => {
           this.mensagem = 'Dados profissionais alterados com sucesso!';
-          console.log('Retorno gravar curriculo', dataC);
           setTimeout(() => {
             this.mensagem = null;
           }, 5000);
         });
       } else {
-        console.log('Entrei para salvar o curriculo', curriculoLattes);
         this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
           if (dataT) {
             this.mensagem = 'Dados profissionais salvos com sucesso!';
@@ -142,12 +139,9 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
         });
       }
     } else {
-      console.log('Entrei para salvar os dados profissionais', dadosProfissionais);
       this.dadosProfissionaisService.save(dadosProfissionais).subscribe(data => {
         if (data && data.id) {
-          console.log('Curriculo lattes antes de setar id do dados profissionais XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', curriculoLattes);
           curriculoLattes.dadosProfissionais.id = data.id;
-          console.log('Curriculo lattes antes de gravar XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', curriculoLattes);
           this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
             if (dataT) {
               this.mensagem = 'Dados profissionais salvos com sucesso!';
