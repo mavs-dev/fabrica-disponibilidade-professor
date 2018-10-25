@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { UnidadeAcademicaService } from 'src/app/services/unidade-academica.service';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
-import { DisciplinaInteresseItem } from 'src/app/interfaces/disciplina-interesse-item';
 import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
 import { Disciplina } from 'src/app/interfaces/disciplina';
 import { InteresseService } from 'src/app/services/interesse.service';
@@ -35,6 +34,7 @@ export class DisciplinasInteresseComponent implements OnInit {
   ngOnInit() {
     this.carregarUnidadesAcademicas();
     this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    console.log(this.usuario);
     this.semestreService.getAll().subscribe(data => {
       if (data) {
         this.semestre = data[0];
@@ -106,9 +106,13 @@ export class DisciplinasInteresseComponent implements OnInit {
     // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
     for (let i = 1; i <= 10; i++) {
       console.log(i);
-      if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
-        && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
+      if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`)
+      && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`)
+      && this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
+      && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
+        console.log('Passou validação');
         this.disciplinaService.save(this.criarObjetoDisciplina(i)).subscribe(data => {
+          console.log('Retorno ----', data);
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
               console.log('Cadastrou interesse -------------------', dataI);
@@ -121,6 +125,7 @@ export class DisciplinasInteresseComponent implements OnInit {
 
   // CRIA O OBJETO DE DISCIPLINAS DE INTERESSE
   criarObjetoDisciplina(numeroDisciplina): Disciplina {
+    console.log('Criando objeto');
     const disciplina: Disciplina = {
       id: null,
       descricao: this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${numeroDisciplina}`).value,
@@ -128,10 +133,16 @@ export class DisciplinasInteresseComponent implements OnInit {
       dataHoraAlteracao: null,
       dataHoraExclusao: null
     };
+    console.log('Objeto criado -----', disciplina);
     return disciplina;
   }
 
   criarObjetoInteresse(disciplina: Disciplina, unidadesAcademicas: UnidadeAcademica[], numeroPrioridade: number): Interesse {
+    console.log('Disciplina ::::', disciplina);
+    console.log('UnidadesAcademicas ::::', unidadesAcademicas);
+    console.log('Numero Prioridade ::::', numeroPrioridade);
+    console.log('Usuario ::::', this.usuario);
+    console.log('Semestre ::::', this.semestre);
     const interesse: Interesse = {
       id: null,
       disciplina: disciplina,
@@ -143,12 +154,15 @@ export class DisciplinasInteresseComponent implements OnInit {
       dataHoraAlteracao: null,
       dataHoraExclusao: null
     };
+    console.log(interesse);
     return interesse;
   }
 
   getUnidadesAcademicasSelecionadas(numeroCampo): UnidadeAcademica[] {
+    console.log('Montar lista de unidades', this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value);
     const unidadesSelecionadas = new Array<UnidadeAcademica>();
-    const unidadesString: Array<never> = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value;
+    const unidadesString = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value;
+    console.log('Montar lista de unidades');
     unidadesString.forEach((value) => {
       unidadesSelecionadas.push({
         id: value['id'],
@@ -159,6 +173,7 @@ export class DisciplinasInteresseComponent implements OnInit {
         dataHoraExclusao: null
       });
     });
+    console.log('Objeto', unidadesSelecionadas);
     return unidadesSelecionadas;
   }
 

@@ -8,8 +8,6 @@ import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
 import { Disponibilidade } from 'src/app/interfaces/disponibilidade';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/interfaces/usuario';
-import { never } from 'rxjs';
-import { $ } from 'protractor';
 
 @Component({
   selector: 'pj-disponibilidades',
@@ -22,6 +20,7 @@ export class DisponibilidadesComponent implements OnInit {
   disponibilidadeForm: FormGroup;
   usuario: Usuario;
   unidadesAcademicas: UnidadeAcademica[];
+  unidadeSelecionadas = [];
   disponibilidadeInformada: Disponibilidade[] = [];
   dropdownSettings = {};
 
@@ -96,6 +95,7 @@ export class DisponibilidadesComponent implements OnInit {
           nome: unidade['nome']
         });
       });
+      this.unidadeSelecionadas[`${value.turno.toLowerCase()}${value.diaDaSemana.toUpperCase()}`] = lista;
       this.disponibilidadeForm.get(`${value.turno.toLowerCase()}${value.diaDaSemana.toUpperCase()}`).setValue(lista);
     });
   }
