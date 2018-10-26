@@ -1,3 +1,5 @@
 <pj-header></pj-header>
-<router-outlet></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <pj-footer></pj-footer>

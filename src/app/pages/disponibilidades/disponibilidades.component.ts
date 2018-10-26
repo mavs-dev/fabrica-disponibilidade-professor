@@ -118,7 +118,7 @@ export class DisponibilidadesComponent implements OnInit {
 
     this.disponibilidadeInformada.forEach((value) => {
       this.disponibilidadeService.save(value).subscribe(data => {
-        //TODO faça alguma coisa em caso de sucesso
+        // TODO faça alguma coisa em caso de sucesso
       });
     });
   }

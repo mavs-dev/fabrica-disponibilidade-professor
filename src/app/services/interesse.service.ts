@@ -27,7 +27,7 @@ export class InteresseService {
   }
 
   save(interesse: Interesse) {
-    console.log('Serviço de interesse', interesse);
+    console.log('\n\n Serviço de interesse SAVE: ', interesse);
     return this.http
       .post<Interesse>(API_SERVICE_INTERESSE, interesse)
       .pipe(

@@ -13,9 +13,9 @@ export const ROUTES: Routes = [
         component: FormularioComponent,
         children: [
             { path: '', redirectTo: 'dados-profissionais', pathMatch: 'full' },
-            { path: 'dados-profissionais', component: DadosProfissionaisComponent },
-            { path: 'disponibilidades', component: DisponibilidadesComponent },
-            { path: 'disciplinas-interesse', component: DisciplinasInteresseComponent }
+            { path: 'dados-profissionais', component: DadosProfissionaisComponent, data: {animation: 'dadosProfissionaisPage'} },
+            { path: 'disponibilidades', component: DisponibilidadesComponent, data: {animation: 'disponibilidadesPage'} },
+            { path: 'disciplinas-interesse', component: DisciplinasInteresseComponent, data: {animation: 'disciplinasInteressePage'} }
         ]
     }
 ];

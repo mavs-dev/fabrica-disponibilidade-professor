@@ -103,7 +103,7 @@ export class DisciplinasInteresseComponent implements OnInit {
           // CADASTROU A DISCIPLINA
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
-              //TODO Fazer alguma coisa após cadastrar o interesse
+              // TODO Fazer alguma coisa após cadastrar o interesse
             });
           }
         });
