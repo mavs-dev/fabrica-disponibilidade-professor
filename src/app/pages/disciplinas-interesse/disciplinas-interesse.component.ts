@@ -78,16 +78,6 @@ export class DisciplinasInteresseComponent implements OnInit {
     };
   }
 
-  // PRINTA O ITEM SELECIONADO NO MULTI-SELECT
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-
-  // PRINTA TODOS OS ITENS AO PRESSIONAR SELECIONAR TODOS NO MULTI-SELECT
-  onSelectAll(items: any) {
-    console.log(items);
-  }
-
   // CARREGA AS UNIDADES ACADÊMICAS
   carregarUnidadesAcademicas() {
     this.unidadeAcademicaService.getAll().subscribe(data => {
@@ -105,17 +95,15 @@ export class DisciplinasInteresseComponent implements OnInit {
   salvar() {
     // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
     for (let i = 1; i <= 10; i++) {
-      console.log(i);
       if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`)
       && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`)
       && this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
       && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
-        console.log('Passou validação');
         this.disciplinaService.save(this.criarObjetoDisciplina(i)).subscribe(data => {
-          console.log('Retorno ----', data);
+          // CADASTROU A DISCIPLINA
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
-              console.log('Cadastrou interesse -------------------', dataI);
+              //TODO Fazer alguma coisa após cadastrar o interesse
             });
           }
         });
@@ -125,7 +113,6 @@ export class DisciplinasInteresseComponent implements OnInit {
 
   // CRIA O OBJETO DE DISCIPLINAS DE INTERESSE
   criarObjetoDisciplina(numeroDisciplina): Disciplina {
-    console.log('Criando objeto');
     const disciplina: Disciplina = {
       id: null,
       descricao: this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${numeroDisciplina}`).value,
@@ -133,16 +120,10 @@ export class DisciplinasInteresseComponent implements OnInit {
       dataHoraAlteracao: null,
       dataHoraExclusao: null
     };
-    console.log('Objeto criado -----', disciplina);
     return disciplina;
   }
 
   criarObjetoInteresse(disciplina: Disciplina, unidadesAcademicas: UnidadeAcademica[], numeroPrioridade: number): Interesse {
-    console.log('Disciplina ::::', disciplina);
-    console.log('UnidadesAcademicas ::::', unidadesAcademicas);
-    console.log('Numero Prioridade ::::', numeroPrioridade);
-    console.log('Usuario ::::', this.usuario);
-    console.log('Semestre ::::', this.semestre);
     const interesse: Interesse = {
       id: null,
       disciplina: disciplina,
@@ -154,15 +135,12 @@ export class DisciplinasInteresseComponent implements OnInit {
       dataHoraAlteracao: null,
       dataHoraExclusao: null
     };
-    console.log(interesse);
     return interesse;
   }
 
   getUnidadesAcademicasSelecionadas(numeroCampo): UnidadeAcademica[] {
-    console.log('Montar lista de unidades', this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value);
     const unidadesSelecionadas = new Array<UnidadeAcademica>();
     const unidadesString = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value;
-    console.log('Montar lista de unidades');
     unidadesString.forEach((value) => {
       unidadesSelecionadas.push({
         id: value['id'],
@@ -173,7 +151,6 @@ export class DisciplinasInteresseComponent implements OnInit {
         dataHoraExclusao: null
       });
     });
-    console.log('Objeto', unidadesSelecionadas);
     return unidadesSelecionadas;
   }
 

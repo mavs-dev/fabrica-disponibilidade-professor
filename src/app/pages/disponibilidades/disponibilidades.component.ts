@@ -59,12 +59,6 @@ export class DisponibilidadesComponent implements OnInit {
     this.verificarCadastroUsuario();
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-  }
-
   carregarUnidadesAcademicas() {
     this.unidadeAcademicaService.getAll().subscribe(data => {
       if (data) {
@@ -124,7 +118,7 @@ export class DisponibilidadesComponent implements OnInit {
 
     this.disponibilidadeInformada.forEach((value) => {
       this.disponibilidadeService.save(value).subscribe(data => {
-        console.log(data);
+        //TODO faça alguma coisa em caso de sucesso
       });
     });
   }
