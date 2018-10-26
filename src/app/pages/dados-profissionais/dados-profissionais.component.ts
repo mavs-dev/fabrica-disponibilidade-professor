@@ -6,6 +6,7 @@ import { CurriculoLattesService } from 'src/app/services/curriculo-lattes.servic
 import { Usuario } from 'src/app/interfaces/usuario';
 import { CurriculoLattes } from 'src/app/interfaces/curriculo-lattes';
 import { DadosProfissionais } from 'src/app/interfaces/dados-profissionais';
+import { Router } from '@angular/router';
 declare var $;
 
 @Component({
@@ -21,7 +22,8 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
   constructor(private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private dadosProfissionaisService: DadosProfissionaisService,
-    private curriculoLattesService: CurriculoLattesService
+    private curriculoLattesService: CurriculoLattesService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -121,14 +123,13 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
         }, 5000);
       });
       if (this.usuario.dadosProfissionais.curriculoLattes && this.curriculoLattesModificado(curriculoLattes)) {
-        console.log('Entrei para atualizar o curriculo', curriculoLattes);
         this.curriculoLattesService.update(this.usuario.dadosProfissionais.curriculoLattes.id, curriculoLattes).subscribe(dataC => {
           this.mensagem = 'Dados profissionais alterados com sucesso!';
           setTimeout(() => {
             this.mensagem = null;
           }, 5000);
         });
-      } else {
+      } else if (!this.usuario.dadosProfissionais.curriculoLattes) {
         this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
           if (dataT) {
             this.mensagem = 'Dados profissionais salvos com sucesso!';
@@ -147,6 +148,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
               this.mensagem = 'Dados profissionais salvos com sucesso!';
               setTimeout(() => {
                 this.mensagem = null;
+                this.router.navigate(['/formulario/disponibilidades']);
               }, 5000);
             }
           });

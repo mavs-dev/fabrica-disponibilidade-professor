@@ -1,5 +1,6 @@
 import { DadosProfissionais } from './dados-profissionais';
 import { Disponibilidade } from './disponibilidade';
+import { Interesse } from './interesse';
 
 export interface Usuario {
     id: number;
@@ -9,6 +10,7 @@ export interface Usuario {
     perfil: string;
     dadosProfissionais: DadosProfissionais;
     disponibilidades: Disponibilidade[];
+    disciplinasDeInteresse?: Interesse[];
     dataHoraCadastro: any;
     dataHoraAlteracao: any;
     dataHoraExclusao: any;

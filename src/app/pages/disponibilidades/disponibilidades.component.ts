@@ -8,6 +8,7 @@ import { UnidadeAcademica } from 'src/app/interfaces/unidade-academica';
 import { Disponibilidade } from 'src/app/interfaces/disponibilidade';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pj-disponibilidades',
@@ -16,6 +17,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class DisponibilidadesComponent implements OnInit {
 
+  mensagem: string;
   semestre: Semestre;
   disponibilidadeForm: FormGroup;
   usuario: Usuario;
@@ -28,7 +30,8 @@ export class DisponibilidadesComponent implements OnInit {
     private unidadeAcademicaService: UnidadeAcademicaService,
     private semestreService: SemestreService,
     private disponibilidadeService: DisponibilidadeService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -81,9 +84,9 @@ export class DisponibilidadesComponent implements OnInit {
   }
 
   preencherFormulario() {
-    this.usuario.disponibilidades.forEach( (value) => {
+    this.usuario.disponibilidades.forEach((value) => {
       const lista = new Array<any>();
-      value.unidadesAcademicas.forEach( unidade => {
+      value.unidadesAcademicas.forEach(unidade => {
         lista.push({
           id: unidade['id'],
           nome: unidade['nome']
@@ -95,9 +98,21 @@ export class DisponibilidadesComponent implements OnInit {
   }
 
   salvar() {
-    if (this.disponibilidadeInformada.length === 0) {
+    if (this.usuario.disponibilidades.length <= 0) {
       this.montarDisponibilidadeInformada();
+      this.disponibilidadeInformada.forEach((value) => {
+        this.disponibilidadeService.save(value).subscribe(data => {
+          if (data && this.usuario.disciplinasDeInteresse.length <= 0) {
+            this.mensagem = 'Disponibilidade cadastrada com sucesso!';
+            setTimeout(() => {
+              this.mensagem = null;
+              this.router.navigate(['/formulario/disciplinas-interesse']);
+            }, 5000);
+          }
+        });
+      });
     } else {
+      this.montarDisponibilidadeInformada();
       this.atualizarDisponibilidadeInformada();
     }
   }
@@ -115,12 +130,6 @@ export class DisponibilidadesComponent implements OnInit {
     this.montarDiaPorTurno('noturno', 'QUARTA');
     this.montarDiaPorTurno('noturno', 'QUINTA');
     this.montarDiaPorTurno('noturno', 'SEXTA');
-
-    this.disponibilidadeInformada.forEach((value) => {
-      this.disponibilidadeService.save(value).subscribe(data => {
-        // TODO faça alguma coisa em caso de sucesso
-      });
-    });
   }
 
   montarDiaPorTurno(turno: string, dia: string) {
@@ -132,7 +141,27 @@ export class DisponibilidadesComponent implements OnInit {
   }
 
   atualizarDisponibilidadeInformada() {
-
+    this.usuarioService.getOne(this.usuario.id).subscribe(data => {
+      if (data) {
+        this.usuario = data;
+      }
+    });
+    this.usuario.disponibilidades.forEach(value => {
+      value.dataHoraExclusao = new Date();
+      this.disponibilidadeService.delete(value.id).subscribe(data => {
+        console.log(data);
+      });
+    });
+    this.disponibilidadeInformada.forEach((value) => {
+      this.disponibilidadeService.save(value).subscribe(data => {
+        if (data) {
+          this.mensagem = 'Disponibilidade alterada com sucesso!';
+          setTimeout(() => {
+            this.mensagem = null;
+          }, 5000);
+        }
+      });
+    });
   }
 
   criarObjetoDisponibilidade(unidadesSelecionadas: Array<never>, turno: string, diaDaSemana: string): Disponibilidade {
