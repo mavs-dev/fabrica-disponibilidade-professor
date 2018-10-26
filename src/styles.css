@@ -12,3 +12,13 @@ html, body {
 .bg-vermelho-projecao {
     background-color: #d93b3b;
 }
+
+.multiselect-dropdown[_ngcontent-c6] .dropdown-btn[_ngcontent-c6] .selected-item[_ngcontent-c6] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    margin-right: 0 !important;
+}
+a[_ngcontent-c6]{
+    color: #fe0000 !important;
+}
