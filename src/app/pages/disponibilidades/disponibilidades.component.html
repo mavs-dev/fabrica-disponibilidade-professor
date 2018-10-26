@@ -3,7 +3,7 @@
   <div class="card-header mb-4">
     <b>INDICAÇÃO DAS UNIDADES E TURNOS PARA DISPONIBILIDADE</b>
   </div>
-
+  <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
   <p>
     Informe a disponibilidade de horário para o {{semestre?.semestreReferencia}}º Semestre de {{semestre?.anoReferencia}}
   </p>

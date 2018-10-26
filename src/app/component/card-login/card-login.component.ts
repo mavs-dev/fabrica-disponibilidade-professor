@@ -15,7 +15,9 @@ export class CardLoginComponent implements OnInit {
   mensagemErro = new EventEmitter();
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private service: LoginService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+    private service: LoginService,
+    private router: Router) { }
 
   ngOnInit() {
     this.configurarFormulario();
