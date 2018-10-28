@@ -3,6 +3,7 @@
   <div class="card-header mb-4">
     <b>CADASTRO DE DADOS ACADÊMICOS E PROFISSIONAIS</b>
   </div>
+  <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
   <form [formGroup]="dadosProfissionaisForm" (ngSubmit)="salvar()">
     <div class="row">
       <div class="col-md-8">
@@ -83,9 +84,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
-          <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
-      </div>
       <div class="col-md-4 text-right">
         <button [disabled]="dadosProfissionaisForm.invalid" type="submit" class="btn btn-outline-primary">
           <i class="fas fa-save"></i> Salvar
