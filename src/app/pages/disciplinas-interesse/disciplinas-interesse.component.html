@@ -1,9 +1,10 @@
-
 <div class="container shadow p-3 mb-5 bg-white rounded">
 
   <div class="card-header mb-4">
     <b>INDICAÇÃO DAS DISCIPLINAS DE INTERESSE</b>
   </div>
+  
+  <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
 
   <p>
     Faça a indicação da(s) disciplina(s) diante de uma ordem de preferência/domínio da matéria, indicando ainda a(s)
@@ -18,15 +19,12 @@
           <label for="inputNomeDisciplina1">1</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina1' type="text" name="inputNomeDisciplina1" id="inputNomeDisciplina1" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina1' type="text" name="inputNomeDisciplina1" id="inputNomeDisciplina1"
+            placeholder="Nome da disciplina">
         </div>
-        <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina1"
-            formControlName="unidadeAcademicaDisciplina1" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas"
-            [settings]="dropdownSettings" >
+        <div class="col-md-4 xpto">
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina1']" name="unidadeAcademicaDisciplina1" formControlName="unidadeAcademicaDisciplina1"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -41,15 +39,12 @@
           <label for="inputNomeDisciplina2">2</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina2' type="text" name="inputNomeDisciplina2" id="inputNomeDisciplina2" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina2' type="text" name="inputNomeDisciplina2" id="inputNomeDisciplina2"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina2"
-            formControlName="unidadeAcademicaDisciplina2" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina2']" name="unidadeAcademicaDisciplina2" formControlName="unidadeAcademicaDisciplina2"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -64,15 +59,12 @@
           <label for="inputNomeDisciplina3">3</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina3' type="text" name="inputNomeDisciplina3" id="inputNomeDisciplina3" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina3' type="text" name="inputNomeDisciplina3" id="inputNomeDisciplina3"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina3"
-            formControlName="unidadeAcademicaDisciplina3" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina3']" name="unidadeAcademicaDisciplina3" formControlName="unidadeAcademicaDisciplina3"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -87,15 +79,12 @@
           <label for="inputNomeDisciplina4">4</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina4' type="text" name="inputNomeDisciplina4" id="inputNomeDisciplina4" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina4' type="text" name="inputNomeDisciplina4" id="inputNomeDisciplina4"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina4"
-            formControlName="unidadeAcademicaDisciplina4" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina4']" name="unidadeAcademicaDisciplina4" formControlName="unidadeAcademicaDisciplina4"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -110,15 +99,12 @@
           <label for="inputNomeDisciplina5">5</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina5' type="text" name="inputNomeDisciplina5" id="inputNomeDisciplina5" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina5' type="text" name="inputNomeDisciplina5" id="inputNomeDisciplina5"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina5"
-            formControlName="unidadeAcademicaDisciplina5" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina5']" name="unidadeAcademicaDisciplina5" formControlName="unidadeAcademicaDisciplina5"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -133,15 +119,12 @@
           <label for="inputNomeDisciplina6">6</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina6' type="text" name="inputNomeDisciplina6" id="inputNomeDisciplina6" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina6' type="text" name="inputNomeDisciplina6" id="inputNomeDisciplina6"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina6"
-            formControlName="unidadeAcademicaDisciplina6" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina6']" name="unidadeAcademicaDisciplina6" formControlName="unidadeAcademicaDisciplina6"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -156,15 +139,12 @@
           <label for="inputNomeDisciplina7">7</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina7' type="text" name="inputNomeDisciplina7" id="inputNomeDisciplina7" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina7' type="text" name="inputNomeDisciplina7" id="inputNomeDisciplina7"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina7"
-            formControlName="unidadeAcademicaDisciplina7" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina7']" name="unidadeAcademicaDisciplina7" formControlName="unidadeAcademicaDisciplina7"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -179,15 +159,12 @@
           <label for="inputNomeDisciplina8">8</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina8' type="text" name="inputNomeDisciplina8" id="inputNomeDisciplina8" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina8' type="text" name="inputNomeDisciplina8" id="inputNomeDisciplina8"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina8"
-            formControlName="unidadeAcademicaDisciplina8" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina8']" name="unidadeAcademicaDisciplina8" formControlName="unidadeAcademicaDisciplina8"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -202,15 +179,12 @@
           <label for="inputNomeDisciplina9">9</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina9' type="text" name="inputNomeDisciplina9" id="inputNomeDisciplina9" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina9' type="text" name="inputNomeDisciplina9" id="inputNomeDisciplina9"
+            placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina9"
-            formControlName="unidadeAcademicaDisciplina9" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina9']" name="unidadeAcademicaDisciplina9" formControlName="unidadeAcademicaDisciplina9"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">
@@ -225,15 +199,12 @@
           <label for="inputNomeDisciplina10">10</label>
         </div>
         <div class="col-md-6">
-          <input class="form-control" formControlName='inputNomeDisciplina10' type="text" name="inputNomeDisciplina10" id="inputNomeDisciplina10" placeholder="Nome da disciplina">
+          <input class="form-control" formControlName='inputNomeDisciplina10' type="text" name="inputNomeDisciplina10"
+            id="inputNomeDisciplina10" placeholder="Nome da disciplina">
         </div>
         <div class="col-md-4">
-          <ng-multiselect-dropdown 
-            name="unidadeAcademicaDisciplina10"
-            formControlName="unidadeAcademicaDisciplina10" 
-            [placeholder]="'Selecione a(s) unidade(s) ...'" 
-            [data]="unidadesAcademicas" 
-            [settings]="dropdownSettings" >
+          <ng-multiselect-dropdown [(ngModel)]="unidadesSelecionadas['unidadeAcademicaDisciplina10']" name="unidadeAcademicaDisciplina10" formControlName="unidadeAcademicaDisciplina10"
+            [placeholder]="'Selecione a(s) unidade(s) ...'" [data]="unidadesAcademicas" [settings]="dropdownSettings">
           </ng-multiselect-dropdown>
         </div>
         <div class="col-sm-1 mx-auto">

@@ -9,6 +9,7 @@ import { Interesse } from 'src/app/interfaces/interesse';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { Semestre } from 'src/app/interfaces/semestre';
 import { SemestreService } from 'src/app/services/semestre.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'pj-disciplinas-interesse',
@@ -17,22 +18,26 @@ import { SemestreService } from 'src/app/services/semestre.service';
 })
 export class DisciplinasInteresseComponent implements OnInit {
 
+  mensagem: string;
   DisciplinasDeinteresseForm: FormGroup;
   usuario: Usuario;
   semestre: Semestre;
   unidadesAcademicas: UnidadeAcademica[];
   dropdownSettings = {};
+  unidadesSelecionadas = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private unidadeAcademicaService: UnidadeAcademicaService,
     private disciplinaService: DisciplinaService,
     private interesseService: InteresseService,
-    private semestreService: SemestreService
+    private semestreService: SemestreService,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
     this.carregarUnidadesAcademicas();
+    this.carregarInformacoesUsuario();
     this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
     console.log(this.usuario);
     this.semestreService.getAll().subscribe(data => {
@@ -79,6 +84,15 @@ export class DisciplinasInteresseComponent implements OnInit {
   }
 
   // CARREGA AS UNIDADES ACADÊMICAS
+  carregarInformacoesUsuario() {
+    this.usuarioService.getOne(JSON.parse(sessionStorage.getItem('usuario')).id).subscribe(data => {
+      if (data) {
+        this.usuario = data;
+        this.preencherFormulario();
+      }
+    });
+  }
+
   carregarUnidadesAcademicas() {
     this.unidadeAcademicaService.getAll().subscribe(data => {
       if (data) {
@@ -93,17 +107,19 @@ export class DisciplinasInteresseComponent implements OnInit {
   }
 
   salvar() {
-    // VER COMO FICARÁ A INTERFACE DE DISCIPLINAS.
     for (let i = 1; i <= 10; i++) {
       if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`)
-      && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`)
-      && this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
-      && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
+        && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`)
+        && this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
+        && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
         this.disciplinaService.save(this.criarObjetoDisciplina(i)).subscribe(data => {
           // CADASTROU A DISCIPLINA
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
-              // TODO Fazer alguma coisa após cadastrar o interesse
+              this.mensagem = 'Disciplinas de interesse cadastradas com sucesso!';
+              setTimeout(() => {
+                this.mensagem = null;
+              }, 5000);
             });
           }
         });
@@ -123,6 +139,7 @@ export class DisciplinasInteresseComponent implements OnInit {
     return disciplina;
   }
 
+  // CRIA O OBJETO INTERESSE
   criarObjetoInteresse(disciplina: Disciplina, unidadesAcademicas: UnidadeAcademica[], numeroPrioridade: number): Interesse {
     const interesse: Interesse = {
       id: null,
@@ -138,6 +155,23 @@ export class DisciplinasInteresseComponent implements OnInit {
     return interesse;
   }
 
+  // PREENCHER AS INFORMAÇÕES NA TELA
+  preencherFormulario() {
+    this.usuario.disciplinasDeInteresse.forEach((data) => {
+      const lista = new Array<any>();
+      data.unidadesAcademicas.forEach(unidade => {
+        lista.push({
+          id: unidade['id'],
+          nome: unidade['nome']
+        });
+      });
+      this.unidadesSelecionadas[`unidadeAcademicaDisciplina${data.prioridade}`] = lista;
+      this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${data.prioridade}`).setValue(lista);
+      this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${data.prioridade}`).setValue(data.disciplina.descricao);
+    });
+  }
+
+  // PEGAR AS UNIDADES SELECIONADAS
   getUnidadesAcademicasSelecionadas(numeroCampo): UnidadeAcademica[] {
     const unidadesSelecionadas = new Array<UnidadeAcademica>();
     const unidadesString = this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${numeroCampo}`).value;
@@ -153,12 +187,4 @@ export class DisciplinasInteresseComponent implements OnInit {
     });
     return unidadesSelecionadas;
   }
-
-  // preencherFormulario() {
-  //   if (this.usuario.disciplinasDeInteresse) {
-  //     disciplinasDeInteresse.forEach(element => {
-  //       this.usuario.disciplinasDeInteresse
-  //     });
-  //   }
-  // }
 }
