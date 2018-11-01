@@ -106,7 +106,39 @@ export class DisciplinasInteresseComponent implements OnInit {
     this.DisciplinasDeinteresseForm.addControl(name, formControl);
   }
 
+  // SALVAR AS INFORMAÇÕES
   salvar() {
+    if (this.usuario.disciplinasDeInteresse.length <= 0) {
+      for (let i = 1; i <= 10; i++) {
+        if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`)
+          && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`)
+          && this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`).value
+          && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`).value) {
+          this.disciplinaService.save(this.criarObjetoDisciplina(i)).subscribe(data => {
+            // CADASTROU A DISCIPLINA
+            if (data) {
+              this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
+                this.mensagem = 'Disciplinas de interesse cadastradas com sucesso!';
+                setTimeout(() => {
+                  this.mensagem = null;
+                }, 5000);
+              });
+            }
+          });
+        }
+      }
+    } else {
+      this.atualizarQuadroInteresse();
+    }
+  }
+
+  // ATUALIZAR AS INFORMAÇÕES
+  atualizarQuadroInteresse() {
+    this.usuario.disciplinasDeInteresse.forEach(value => {
+      this.interesseService.delete(value.id).subscribe(data => {
+        console.log(data);
+      });
+    });
     for (let i = 1; i <= 10; i++) {
       if (this.DisciplinasDeinteresseForm.get(`inputNomeDisciplina${i}`)
         && this.DisciplinasDeinteresseForm.get(`unidadeAcademicaDisciplina${i}`)
@@ -116,7 +148,7 @@ export class DisciplinasInteresseComponent implements OnInit {
           // CADASTROU A DISCIPLINA
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
-              this.mensagem = 'Disciplinas de interesse cadastradas com sucesso!';
+              this.mensagem = 'Disciplinas de interesse atualizadas com sucesso!';
               setTimeout(() => {
                 this.mensagem = null;
               }, 5000);
