@@ -10,6 +10,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { Router } from '@angular/router';
 
+declare var $;
+
 @Component({
   selector: 'pj-disponibilidades',
   templateUrl: './disponibilidades.component.html',
@@ -103,6 +105,7 @@ export class DisponibilidadesComponent implements OnInit {
       this.disponibilidadeInformada.forEach((value) => {
         this.disponibilidadeService.save(value).subscribe(data => {
           if (data && this.usuario.disciplinasDeInteresse.length <= 0) {
+            $('html, body').scrollTop(0);
             this.mensagem = 'Disponibilidade cadastrada com sucesso!';
             setTimeout(() => {
               this.mensagem = null;
@@ -155,6 +158,7 @@ export class DisponibilidadesComponent implements OnInit {
     this.disponibilidadeInformada.forEach((value) => {
       this.disponibilidadeService.save(value).subscribe(data => {
         if (data) {
+          $('html, body').scrollTop(0);
           this.mensagem = 'Disponibilidade alterada com sucesso!';
           setTimeout(() => {
             this.mensagem = null;

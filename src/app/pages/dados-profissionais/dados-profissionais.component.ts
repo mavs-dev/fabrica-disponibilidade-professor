@@ -7,6 +7,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { CurriculoLattes } from 'src/app/interfaces/curriculo-lattes';
 import { DadosProfissionais } from 'src/app/interfaces/dados-profissionais';
 import { Router } from '@angular/router';
+
 declare var $;
 
 @Component({
@@ -117,6 +118,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
     if (this.usuario.dadosProfissionais) {
       curriculoLattes.dadosProfissionais.id = this.usuario.dadosProfissionais.id;
       this.dadosProfissionaisService.update(this.usuario.dadosProfissionais.id, dadosProfissionais).subscribe(() => {
+        $('html, body').scrollTop(0);
         this.mensagem = 'Dados profissionais alterados com sucesso!';
         setTimeout(() => {
           this.mensagem = null;
@@ -124,6 +126,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       });
       if (this.usuario.dadosProfissionais.curriculoLattes && this.curriculoLattesModificado(curriculoLattes)) {
         this.curriculoLattesService.update(this.usuario.dadosProfissionais.curriculoLattes.id, curriculoLattes).subscribe(dataC => {
+          $('html, body').scrollTop(0);
           this.mensagem = 'Dados profissionais alterados com sucesso!';
           setTimeout(() => {
             this.mensagem = null;
@@ -132,6 +135,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       } else if (!this.usuario.dadosProfissionais.curriculoLattes) {
         this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
           if (dataT) {
+            $('html, body').scrollTop(0);
             this.mensagem = 'Dados profissionais salvos com sucesso!';
             setTimeout(() => {
               this.mensagem = null;
@@ -145,6 +149,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
           curriculoLattes.dadosProfissionais.id = data.id;
           this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
             if (dataT) {
+            $('html, body').scrollTop(0);
               this.mensagem = 'Dados profissionais salvos com sucesso!';
               setTimeout(() => {
                 this.mensagem = null;

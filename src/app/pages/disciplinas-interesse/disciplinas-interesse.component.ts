@@ -11,6 +11,8 @@ import { Semestre } from 'src/app/interfaces/semestre';
 import { SemestreService } from 'src/app/services/semestre.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+declare var $;
+
 @Component({
   selector: 'pj-disciplinas-interesse',
   templateUrl: './disciplinas-interesse.component.html',
@@ -118,6 +120,7 @@ export class DisciplinasInteresseComponent implements OnInit {
             // CADASTROU A DISCIPLINA
             if (data) {
               this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
+                $('html, body').scrollTop(0);
                 this.mensagem = 'Disciplinas de interesse cadastradas com sucesso!';
                 setTimeout(() => {
                   this.mensagem = null;
@@ -148,6 +151,7 @@ export class DisciplinasInteresseComponent implements OnInit {
           // CADASTROU A DISCIPLINA
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
+              $('html, body').scrollTop(0);
               this.mensagem = 'Disciplinas de interesse atualizadas com sucesso!';
               setTimeout(() => {
                 this.mensagem = null;
