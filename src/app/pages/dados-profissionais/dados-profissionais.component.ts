@@ -7,8 +7,8 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { CurriculoLattes } from 'src/app/interfaces/curriculo-lattes';
 import { DadosProfissionais } from 'src/app/interfaces/dados-profissionais';
 import { Router } from '@angular/router';
-import moment from 'moment/src/moment';
-import moment from 'moment-timezone';
+import * as moment from 'moment';
+// import * as moment from 'moment-timezone';
 
 declare var $;
 
@@ -23,7 +23,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
   dadosProfissionaisForm: FormGroup;
   usuario: Usuario;
 
-  maxDate = moment().tz('America/Sao_Paulo').format('YYYY-MM-DD');
+  maxDate = moment(new Date()).format('YYYY-MM-DD');
 
   constructor(private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
