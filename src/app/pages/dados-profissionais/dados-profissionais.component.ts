@@ -8,7 +8,7 @@ import { CurriculoLattes } from 'src/app/interfaces/curriculo-lattes';
 import { DadosProfissionais } from 'src/app/interfaces/dados-profissionais';
 import { Router } from '@angular/router';
 import moment from 'moment/src/moment';
-var moment = require('moment-timezone');
+import moment from 'moment-timezone';
 
 declare var $;
 
