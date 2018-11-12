@@ -13,7 +13,13 @@ export class InputDateComponent implements OnInit {
   @Input()
   label: string;
 
+  @Input()
+  minDate: string;
+  @Input()
+  maxDate: string;
+
   date = new FormControl();
+  // maxDate = moment(new Date()).format('YYYY-MM-DD');
 
   @Output()
   formControl = new EventEmitter();

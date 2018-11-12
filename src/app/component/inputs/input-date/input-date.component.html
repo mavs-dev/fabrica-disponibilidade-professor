@@ -4,6 +4,6 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="{{name}}"><i class="far fa-calendar-alt"></i></span>
   </div>
-  <input [formControl]="date" type="date" class="form-control" aria-label="none" aria-describedby="none">
+  <input [formControl]="date" type="date" class="form-control" aria-label="none" aria-describedby="none" [min]="minDate" [max]="maxDate">
 </div>
 </div>
