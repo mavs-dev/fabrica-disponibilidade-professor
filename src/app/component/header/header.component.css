@@ -1,3 +1,7 @@
+.active {
+  font-weight: bold;
+}
+
 @media (min-width: 992px) {
   .dropdown-usuario {
     margin-left: -7em;

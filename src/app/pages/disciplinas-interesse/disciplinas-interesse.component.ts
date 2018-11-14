@@ -41,7 +41,7 @@ export class DisciplinasInteresseComponent implements OnInit {
     this.carregarUnidadesAcademicas();
     this.carregarInformacoesUsuario();
     this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
-    console.log(this.usuario);
+    // console.log(this.usuario);
     this.semestreService.getAll().subscribe(data => {
       if (data) {
         this.semestre = data[0];
@@ -139,7 +139,7 @@ export class DisciplinasInteresseComponent implements OnInit {
   atualizarQuadroInteresse() {
     this.usuario.disciplinasDeInteresse.forEach(value => {
       this.interesseService.delete(value.id).subscribe(data => {
-        console.log(data);
+        // console.log(data);
       });
     });
     for (let i = 1; i <= 10; i++) {
