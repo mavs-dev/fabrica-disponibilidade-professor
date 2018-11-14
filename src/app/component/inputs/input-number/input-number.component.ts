@@ -18,6 +18,10 @@ export class InputNumberComponent implements OnInit {
   label: string;
   @Input()
   mensagemAjuda: string;
+  @Input()
+  minNumber: number;
+  @Input()
+  maxNumber: number;
 
   number = new FormControl();
 

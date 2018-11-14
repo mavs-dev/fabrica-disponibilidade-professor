@@ -22,8 +22,8 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
   mensagem: string;
   dadosProfissionaisForm: FormGroup;
   usuario: Usuario;
-
   maxDate = moment(new Date()).format('YYYY-MM-DD');
+  minNumber = 0;
 
   constructor(private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
@@ -67,8 +67,13 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       this.dadosProfissionaisForm.get('descricaoTitulacaoEmAndamento').setValue(this.usuario.dadosProfissionais.descricaoTitulacaoEmAndamento);
       // tslint:disable-next-line:max-line-length
       this.dadosProfissionaisForm.get('principalAtuacaoProfissional').setValue(this.usuario.dadosProfissionais.principalAtuacaoProfissional);
-      this.dadosProfissionaisForm.get('tempoExpProfissional').setValue(this.usuario.dadosProfissionais.tempoExpProfissional);
-      this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior);
+      this.dadosProfissionaisForm.get('anoExpProfissional').setValue(Math.trunc(this.usuario.dadosProfissionais.tempoExpProfissional / 12));
+      // tslint:disable-next-line:max-line-length
+      this.dadosProfissionaisForm.get('mesExpProfissional').setValue(this.usuario.dadosProfissionais.tempoExpProfissional - (Math.trunc((this.usuario.dadosProfissionais.tempoExpProfissional / 12)) * 12));
+      // tslint:disable-next-line:max-line-length
+      this.dadosProfissionaisForm.get('anoExpMagisterioSuperior').setValue(Math.trunc(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior / 12));
+      // tslint:disable-next-line:max-line-length
+      this.dadosProfissionaisForm.get('mesExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior - (Math.trunc((this.usuario.dadosProfissionais.tempoExpMagisterioSuperior / 12)) * 12));
       this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').setValue(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica);
       if (this.usuario.dadosProfissionais.curriculoLattes) {
         this.dadosProfissionaisForm.get('curriculoLattesDataAtt').setValue(this.usuario.dadosProfissionais.curriculoLattes.dataAtualizacao);
@@ -100,8 +105,10 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       titulacaoEmAndamento: this.dadosProfissionaisForm.get('titulacaoEmAndamento').value,
       descricaoTitulacaoEmAndamento: this.dadosProfissionaisForm.get('descricaoTitulacaoEmAndamento').value,
       principalAtuacaoProfissional: this.dadosProfissionaisForm.get('principalAtuacaoProfissional').value,
-      tempoExpProfissional: this.dadosProfissionaisForm.get('tempoExpProfissional').value,
-      tempoExpMagisterioSuperior: this.dadosProfissionaisForm.get('tempoExpMagisterioSuperior').value,
+      // tslint:disable-next-line:max-line-length
+      tempoExpProfissional: (this.dadosProfissionaisForm.get('anoExpProfissional').value * 12) + this.dadosProfissionaisForm.get('mesExpProfissional').value,
+      // tslint:disable-next-line:max-line-length
+      tempoExpMagisterioSuperior: (this.dadosProfissionaisForm.get('anoExpMagisterioSuperior').value * 12) + this.dadosProfissionaisForm.get('mesExpMagisterioSuperior').value,
       tempoExpDocenciaEdBasica: this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').value,
       curriculoLattes: null,
       professor: this.usuario,
@@ -123,7 +130,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
     if (this.usuario.dadosProfissionais) {
       curriculoLattes.dadosProfissionais.id = this.usuario.dadosProfissionais.id;
       this.dadosProfissionaisService.update(this.usuario.dadosProfissionais.id, dadosProfissionais).subscribe(() => {
-        $('html, body').scrollTop(0);
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
         this.mensagem = 'Dados profissionais alterados com sucesso!';
         setTimeout(() => {
           this.mensagem = null;
@@ -131,7 +138,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       });
       if (this.usuario.dadosProfissionais.curriculoLattes && this.curriculoLattesModificado(curriculoLattes)) {
         this.curriculoLattesService.update(this.usuario.dadosProfissionais.curriculoLattes.id, curriculoLattes).subscribe(dataC => {
-          $('html, body').scrollTop(0);
+          $('html, body').animate({ scrollTop: 0 }, 'slow');
           this.mensagem = 'Dados profissionais alterados com sucesso!';
           setTimeout(() => {
             this.mensagem = null;
@@ -140,7 +147,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       } else if (!this.usuario.dadosProfissionais.curriculoLattes) {
         this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
           if (dataT) {
-            $('html, body').scrollTop(0);
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
             this.mensagem = 'Dados profissionais salvos com sucesso!';
             setTimeout(() => {
               this.mensagem = null;
@@ -154,7 +161,7 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
           curriculoLattes.dadosProfissionais.id = data.id;
           this.curriculoLattesService.save(curriculoLattes).subscribe(dataT => {
             if (dataT) {
-            $('html, body').scrollTop(0);
+              $('html, body').animate({ scrollTop: 0 }, 'slow');
               this.mensagem = 'Dados profissionais salvos com sucesso!';
               setTimeout(() => {
                 this.mensagem = null;
@@ -166,5 +173,4 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
 }

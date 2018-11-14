@@ -105,7 +105,7 @@ export class DisponibilidadesComponent implements OnInit {
       this.disponibilidadeInformada.forEach((value) => {
         this.disponibilidadeService.save(value).subscribe(data => {
           if (data && this.usuario.disciplinasDeInteresse.length <= 0) {
-            $('html, body').scrollTop(0);
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
             this.mensagem = 'Disponibilidade cadastrada com sucesso!';
             setTimeout(() => {
               this.mensagem = null;
@@ -158,7 +158,7 @@ export class DisponibilidadesComponent implements OnInit {
     this.disponibilidadeInformada.forEach((value) => {
       this.disponibilidadeService.save(value).subscribe(data => {
         if (data) {
-          $('html, body').scrollTop(0);
+          $('html, body').animate({ scrollTop: 0 }, 'slow');
           this.mensagem = 'Disponibilidade alterada com sucesso!';
           setTimeout(() => {
             this.mensagem = null;

@@ -5,6 +5,6 @@
       <span class="input-group-text" id="{{name}}"><i class="fas {{icone}}"></i></span>
     </div>
     <input [formControl]="number" type="number" class="form-control" placeholder="{{placeText}}" aria-label="none"
-      aria-describedby="none">
+      aria-describedby="none" [min]="minNumber" [max]="maxNumber">
   </div>
 </div>

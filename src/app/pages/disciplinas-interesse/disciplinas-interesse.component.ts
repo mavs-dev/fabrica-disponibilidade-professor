@@ -120,7 +120,7 @@ export class DisciplinasInteresseComponent implements OnInit {
             // CADASTROU A DISCIPLINA
             if (data) {
               this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
-                $('html, body').scrollTop(0);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
                 this.mensagem = 'Disciplinas de interesse cadastradas com sucesso!';
                 setTimeout(() => {
                   this.mensagem = null;
@@ -151,7 +151,7 @@ export class DisciplinasInteresseComponent implements OnInit {
           // CADASTROU A DISCIPLINA
           if (data) {
             this.interesseService.save(this.criarObjetoInteresse(data, this.getUnidadesAcademicasSelecionadas(i), i)).subscribe(dataI => {
-              $('html, body').scrollTop(0);
+              $('html, body').animate({ scrollTop: 0 }, 'slow');
               this.mensagem = 'Disciplinas de interesse atualizadas com sucesso!';
               setTimeout(() => {
                 this.mensagem = null;

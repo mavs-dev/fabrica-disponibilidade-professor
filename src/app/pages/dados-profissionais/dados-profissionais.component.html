@@ -51,15 +51,23 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
-        <pj-input-number (formControl)="addFormControl('tempoExpProfissional', $event)" placeText="Digite a quantidade de meses"
-          label="Tempo de exp. profissional" name="expProfissional"></pj-input-number>
+      <div class="col">
+        <pj-input-number (formControl)="addFormControl('anoExpProfissional', $event)" placeText="Digite a quantidade de meses"
+          label="Anos de experiência profissional" name="anoExpProfissional" minNumber="{{minNumber}}"></pj-input-number>
       </div>
-      <div class="col-md-4">
-        <pj-input-number (formControl)="addFormControl('tempoExpMagisterioSuperior', $event)" placeText="Digite a quantidade de meses"
-          label="Tempo de exp. magistério superior" name="expMagisterioSuperior"></pj-input-number>
+      <div class="col">
+        <pj-input-number (formControl)="addFormControl('mesExpProfissional', $event)" placeText="Digite a quantidade de meses"
+          label="Meses de experiência profissional" name="mesExpProfissional" minNumber="{{minNumber}}"></pj-input-number>
       </div>
-      <div class="col-md-4">
+      <div class="col">
+        <pj-input-number (formControl)="addFormControl('anoExpMagisterioSuperior', $event)" placeText="Digite a quantidade de meses"
+          label="Anos de exp. magistério superior" name="anoExpMagisterioSuperior" minNumber="{{minNumber}}"></pj-input-number>
+      </div>
+      <div class="col">
+        <pj-input-number (formControl)="addFormControl('mesExpMagisterioSuperior', $event)" placeText="Digite a quantidade de meses"
+          label="Meses de exp. magistério superior" name="mesExpMagisterioSuperior" minNumber="{{minNumber}}"></pj-input-number>
+      </div>
+      <div class="col">
         <pj-input-number (formControl)="addFormControl('tempoExpDocenciaEdBasica', $event)" placeText="Digite a quantidade de meses"
           label="Tempo de exp. docência na ed. básica" name="expDocenciaEdBasica">
           <span class="badge badge-secondary" data-toggle="tooltip" title="" data-original-title="Somente para docentes da escola de formação de professores.">?</span>
