@@ -74,7 +74,10 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       this.dadosProfissionaisForm.get('anoExpMagisterioSuperior').setValue(Math.trunc(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior / 12));
       // tslint:disable-next-line:max-line-length
       this.dadosProfissionaisForm.get('mesExpMagisterioSuperior').setValue(this.usuario.dadosProfissionais.tempoExpMagisterioSuperior - (Math.trunc((this.usuario.dadosProfissionais.tempoExpMagisterioSuperior / 12)) * 12));
-      this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').setValue(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica);
+      // tslint:disable-next-line:max-line-length
+      this.dadosProfissionaisForm.get('anoExpDocenciaEdBasica').setValue(Math.trunc(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica / 12));
+      // tslint:disable-next-line:max-line-length
+      this.dadosProfissionaisForm.get('mesExpDocenciaEdBasica').setValue(this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica - (Math.trunc((this.usuario.dadosProfissionais.tempoExpDocenciaEdBasica / 12)) * 12));
       if (this.usuario.dadosProfissionais.curriculoLattes) {
         this.dadosProfissionaisForm.get('curriculoLattesDataAtt').setValue(this.usuario.dadosProfissionais.curriculoLattes.dataAtualizacao);
         this.dadosProfissionaisForm.get('curriculoLattesUrl').setValue(this.usuario.dadosProfissionais.curriculoLattes.url);
@@ -109,7 +112,8 @@ export class DadosProfissionaisComponent implements OnInit, AfterViewInit {
       tempoExpProfissional: (this.dadosProfissionaisForm.get('anoExpProfissional').value * 12) + this.dadosProfissionaisForm.get('mesExpProfissional').value,
       // tslint:disable-next-line:max-line-length
       tempoExpMagisterioSuperior: (this.dadosProfissionaisForm.get('anoExpMagisterioSuperior').value * 12) + this.dadosProfissionaisForm.get('mesExpMagisterioSuperior').value,
-      tempoExpDocenciaEdBasica: this.dadosProfissionaisForm.get('tempoExpDocenciaEdBasica').value,
+      // tslint:disable-next-line:max-line-length
+      tempoExpDocenciaEdBasica: (this.dadosProfissionaisForm.get('anoExpDocenciaEdBasica').value * 12) + this.dadosProfissionaisForm.get('mesExpDocenciaEdBasica').value,
       curriculoLattes: null,
       professor: this.usuario,
       dataHoraCadastro: null,

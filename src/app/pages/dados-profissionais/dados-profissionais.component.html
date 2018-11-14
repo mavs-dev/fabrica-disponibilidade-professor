@@ -53,24 +53,30 @@
     <div class="row">
       <div class="col">
         <pj-input-number (formControl)="addFormControl('anoExpProfissional', $event)" placeText="Digite a quantidade de meses"
-          label="Anos de experiência profissional" name="anoExpProfissional" minNumber="{{minNumber}}"></pj-input-number>
+          label="Anos de exp. profissional" name="anoExpProfissional" minNumber="{{minNumber}}"></pj-input-number>
       </div>
       <div class="col">
         <pj-input-number (formControl)="addFormControl('mesExpProfissional', $event)" placeText="Digite a quantidade de meses"
-          label="Meses de experiência profissional" name="mesExpProfissional" minNumber="{{minNumber}}"></pj-input-number>
+          label="Meses de exp. profissional" name="mesExpProfissional" minNumber="{{minNumber}}"></pj-input-number>
       </div>
       <div class="col">
         <pj-input-number (formControl)="addFormControl('anoExpMagisterioSuperior', $event)" placeText="Digite a quantidade de meses"
-          label="Anos de exp. magistério superior" name="anoExpMagisterioSuperior" minNumber="{{minNumber}}"></pj-input-number>
+          label="Anos de exp. magis. superior" name="anoExpMagisterioSuperior" minNumber="{{minNumber}}"></pj-input-number>
       </div>
       <div class="col">
         <pj-input-number (formControl)="addFormControl('mesExpMagisterioSuperior', $event)" placeText="Digite a quantidade de meses"
-          label="Meses de exp. magistério superior" name="mesExpMagisterioSuperior" minNumber="{{minNumber}}"></pj-input-number>
+          label="Meses de exp. magis. superior" name="mesExpMagisterioSuperior" minNumber="{{minNumber}}"></pj-input-number>
       </div>
       <div class="col">
-        <pj-input-number (formControl)="addFormControl('tempoExpDocenciaEdBasica', $event)" placeText="Digite a quantidade de meses"
-          label="Tempo de exp. docência na ed. básica" name="expDocenciaEdBasica">
-          <span class="badge badge-secondary" data-toggle="tooltip" title="" data-original-title="Somente para docentes da escola de formação de professores.">?</span>
+        <pj-input-number (formControl)="addFormControl('anoExpDocenciaEdBasica', $event)" placeText="Digite a quantidade de meses"
+          label="Anos de exp. docência na EB" name="anoExpDocenciaEdBasica" minNumber="{{minNumber}}">
+          <span class="badge badge-secondary" data-toggle="tooltip" title="" data-original-title="EB: Educação Básica. Somente para docentes da escola de formação de professores.">?</span>
+        </pj-input-number>
+      </div>
+      <div class="col">
+        <pj-input-number (formControl)="addFormControl('mesExpDocenciaEdBasica', $event)" placeText="Digite a quantidade de meses"
+          label="Meses de exp. docência na EB" name="mesExpDocenciaEdBasica" minNumber="{{minNumber}}">
+          <span class="badge badge-secondary" data-toggle="tooltip" title="" data-original-title="EB: Educação Básica. Somente para docentes da escola de formação de professores.">?</span>
         </pj-input-number>
       </div>
     </div>
