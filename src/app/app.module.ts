@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TextAreaComponent } from './component/inputs/text-area/text-area.component';
 import { DisciplinaInteresseItemComponent } from './component/disciplina-interesse-item/disciplina-interesse-item.component';
+import { InputNumberCleanComponent } from './component/inputs/input-number-clean/input-number-clean.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DisciplinaInteresseItemComponent } from './component/disciplina-interes
     ModalComponent,
     DisponibilidadesComponent,
     FormularioComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    InputNumberCleanComponent
   ],
   imports: [
     BrowserModule,
