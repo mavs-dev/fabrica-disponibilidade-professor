@@ -5,6 +5,7 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilidades.component';
 import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/disciplinas-interesse.component';
+import { PainelSelecaoProfessorComponent } from './pages/painel-selecao-professor/painel-selecao-professor.component';
 
 export const ROUTES: Routes = [
     { path: '', component: LoginComponent },
@@ -16,6 +17,13 @@ export const ROUTES: Routes = [
             { path: 'dados-profissionais', component: DadosProfissionaisComponent, data: {animation: 'dadosProfissionaisPage'} },
             { path: 'disponibilidades', component: DisponibilidadesComponent, data: {animation: 'disponibilidadesPage'} },
             { path: 'disciplinas-interesse', component: DisciplinasInteresseComponent, data: {animation: 'disciplinasInteressePage'} }
+        ]
+    },
+    {
+        path: 'alocacao',
+        children: [
+            { path: '', redirectTo: 'selecao-professor', pathMatch: 'full' },
+            { path: 'selecao-professor', component: PainelSelecaoProfessorComponent },
         ]
     }
 ];

@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TextAreaComponent } from './component/inputs/text-area/text-area.component';
 import { DisciplinaInteresseItemComponent } from './component/disciplina-interesse-item/disciplina-interesse-item.component';
 import { InputNumberCleanComponent } from './component/inputs/input-number-clean/input-number-clean.component';
+import { PainelSelecaoProfessorComponent } from './pages/painel-selecao-professor/painel-selecao-professor.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { InputNumberCleanComponent } from './component/inputs/input-number-clean
     DisponibilidadesComponent,
     FormularioComponent,
     TextAreaComponent,
-    InputNumberCleanComponent
+    InputNumberCleanComponent,
+    PainelSelecaoProfessorComponent
   ],
   imports: [
     BrowserModule,
