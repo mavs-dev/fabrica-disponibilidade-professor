@@ -61,7 +61,7 @@ import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-co
     FormularioComponent,
     TextAreaComponent,
     InputNumberCleanComponent,
-    AlocacaoComponent
+    AlocacaoComponent,
     PainelSelecaoProfessorComponent,
     PainelCoordenadorComponent
   ],
