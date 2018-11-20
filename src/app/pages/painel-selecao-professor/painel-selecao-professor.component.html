@@ -1,3 +1,21 @@
-<p>
-  painel-selecao-professor works!
-</p>
+<div class="row">
+  <div class="col-4 container shadow p-3 mb-5 bg-white rounded">
+  
+    <div class="card-header mb-4">
+      <b>FILTROS</b>
+    </div>
+    <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
+    <form [formGroup]="pesquisaProfessorForm" (ngSubmit)="salvar()">
+
+    </form>
+  </div>
+  
+  <div class="col-7 container shadow p-3 mb-5 bg-white rounded">
+  
+    <div class="card-header mb-4">
+      <b>LISTAGEM DOS PROFESSORES</b>
+    </div>
+    
+  </div>
+
+</div>

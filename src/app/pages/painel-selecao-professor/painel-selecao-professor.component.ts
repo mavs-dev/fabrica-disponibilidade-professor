@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'pj-painel-selecao-professor',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelSelecaoProfessorComponent implements OnInit {
 
-  constructor() { }
+  mensagem: string;
+
+  pesquisaProfessorForm: FormGroup;
+
+  constructor(private builder: FormBuilder) { }
 
   ngOnInit() {
+    this.pesquisaProfessorForm = this.builder.group({});
+  }
+
+  salvar() {
+
   }
 
 }
