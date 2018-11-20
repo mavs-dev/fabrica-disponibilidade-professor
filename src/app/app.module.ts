@@ -33,6 +33,7 @@ import { TextAreaComponent } from './component/inputs/text-area/text-area.compon
 import { DisciplinaInteresseItemComponent } from './component/disciplina-interesse-item/disciplina-interesse-item.component';
 import { InputNumberCleanComponent } from './component/inputs/input-number-clean/input-number-clean.component';
 import { PainelSelecaoProfessorComponent } from './pages/painel-selecao-professor/painel-selecao-professor.component';
+import { AlocacaoComponent } from './pages/alocacao/alocacao.component';
 import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-coordenador.component';
 
 @NgModule({
@@ -60,6 +61,7 @@ import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-co
     FormularioComponent,
     TextAreaComponent,
     InputNumberCleanComponent,
+    AlocacaoComponent
     PainelSelecaoProfessorComponent,
     PainelCoordenadorComponent
   ],

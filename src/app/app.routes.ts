@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { DadosProfissionaisComponent } from './pages/dados-profissionais/dados-profissionais.component';
 import { FormularioComponent } from './pages/formulario/formulario.component';
-import { HomeComponent } from './pages/home/home.component';
 import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilidades.component';
 import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/disciplinas-interesse.component';
 import { PainelSelecaoProfessorComponent } from './pages/painel-selecao-professor/painel-selecao-professor.component';
+import { AlocacaoComponent } from './pages/alocacao/alocacao.component';
 
 export const ROUTES: Routes = [
     { path: '', component: LoginComponent },
@@ -21,6 +21,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'alocacao',
+        component: AlocacaoComponent,
         children: [
             { path: '', redirectTo: 'selecao-professor', pathMatch: 'full' },
             { path: 'selecao-professor', component: PainelSelecaoProfessorComponent },
