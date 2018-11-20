@@ -6,6 +6,7 @@ import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilid
 import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/disciplinas-interesse.component';
 import { PainelSelecaoProfessorComponent } from './pages/painel-selecao-professor/painel-selecao-professor.component';
 import { AlocacaoComponent } from './pages/alocacao/alocacao.component';
+import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-coordenador.component';
 
 export const ROUTES: Routes = [
     { path: '', component: LoginComponent },
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
         children: [
             { path: '', redirectTo: 'selecao-professor', pathMatch: 'full' },
             { path: 'selecao-professor', component: PainelSelecaoProfessorComponent },
+            { path: 'painel-coordenador', component: PainelCoordenadorComponent }
         ]
     }
 ];
