@@ -12,10 +12,22 @@ export class PainelSelecaoProfessorComponent implements OnInit {
 
   pesquisaProfessorForm: FormGroup;
 
+  dropdownSettings = {};
+
   constructor(private builder: FormBuilder) { }
 
   ngOnInit() {
     this.pesquisaProfessorForm = this.builder.group({});
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'nome',
+      selectAllText: 'Selecionar todos',
+      unSelectAllText: 'Desmarcar todos',
+      itemsShowLimit: 5,
+      allowSearchFilter: false
+    };
   }
 
   salvar() {

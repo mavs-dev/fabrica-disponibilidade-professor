@@ -22,3 +22,7 @@ html, body {
 .multiselect-parent a{
     color: #fe0000 !important;
 } */
+
+pj-input-text {
+    width: 100%;
+}
