@@ -24,9 +24,6 @@ import { DisciplinasInteresseComponent } from './pages/disciplinas-interesse/dis
 import { ModalComponent } from './component/modal/modal.component';
 import { DisponibilidadesComponent } from './pages/disponibilidades/disponibilidades.component';
 import { FormularioComponent } from './pages/formulario/formulario.component';
-
-// BIBLIOTECAS EXTERNAS
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TextAreaComponent } from './component/inputs/text-area/text-area.component';
@@ -35,6 +32,11 @@ import { InputNumberCleanComponent } from './component/inputs/input-number-clean
 import { PainelSelecaoProfessorComponent } from './pages/painel-selecao-professor/painel-selecao-professor.component';
 import { AlocacaoComponent } from './pages/alocacao/alocacao.component';
 import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-coordenador.component';
+
+// BIBLIOTECAS EXTERNAS
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DataTableModule } from 'angular-6-datatable';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-co
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    DataTableModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
     HttpClientModule,

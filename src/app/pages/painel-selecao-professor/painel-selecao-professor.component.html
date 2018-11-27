@@ -38,6 +38,46 @@
       <div class="card-header mb-4">
         <b>LISTAGEM DOS PROFESSORES</b>
       </div>
+
+      <table class="table table-sm table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">
+              <mfDefaultSorter by="name">Nome</mfDefaultSorter>
+            </th>
+            <th scope="col">
+              <mfDefaultSorter by="email">Unidade</mfDefaultSorter>
+            </th>
+            <th scope="col">
+              <mfDefaultSorter by="age">Disciplina</mfDefaultSorter>
+            </th>
+            <th scope="col">
+              <mfDefaultSorter by="city">Dia da Semana</mfDefaultSorter>
+            </th>
+            <th scope="col">
+              Turno
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of mf.data" class="text-center">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.city | uppercase}}</td>
+            <td>Turno</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
+
     </div>
   </div>
 
