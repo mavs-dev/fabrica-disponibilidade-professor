@@ -6,44 +6,33 @@
       </div>
       <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
       <form [formGroup]="pesquisaProfessorForm" (ngSubmit)="salvar()">
-
       </form>
-
       <div class="row col-md-12 mx-auto">
         <pj-input-text label="Nome do Professor" name="nomeProfessor" icone="fa-user" placeText="Digite o nome do professor"></pj-input-text>
       </div>
       <div class="row col-md-12 mx-auto">
         <div class="form-group" style="width: 100%;">
-          <label for="inputDisponibilidadeSegunda">Unidade Acadêmica</label>
-          <ng-multiselect-dropdown name="unidadeAcademica" [placeholder]="'Selecione ...'"
-          [settings]="dropdownSettings">
-          </ng-multiselect-dropdown>
+          <label for="inputDisponibilidadeSegunda">Unidade acadêmica</label>
+          <ng-multiselect-dropdown name="unidadeAcademica" [placeholder]="'Selecione ...'" [settings]="dropdownSettings"></ng-multiselect-dropdown>
         </div>
       </div>
       <div class="row col-md-12 mx-auto">
-        <pj-input-text label="Disciplina" name="disciplina" icone="fa-bookmark"
-        placeText="Digite o nome da disciplina"></pj-input-text>
+        <pj-input-text label="Disciplina" name="disciplina" icone="fa-bookmark" placeText="Digite o nome da disciplina"></pj-input-text>
       </div>
       <div class="row col-md-12 mx-auto">
         <div class="form-group" style="width: 100%;">
-          <label for="inputDisponibilidadeSegunda">Dia da Semana</label>
-          <ng-multiselect-dropdown name="diaDaSemana" [placeholder]="'Selecione ...'"
-          [settings]="dropdownSettings">
-          </ng-multiselect-dropdown>
+          <label for="inputDisponibilidadeSegunda">Dia da semana</label>
+          <ng-multiselect-dropdown name="diaDaSemana" [placeholder]="'Selecione ...'" [settings]="dropdownSettings"></ng-multiselect-dropdown>
         </div>
       </div>
       <div class="row col-md-12 mx-auto">
         <div class="form-group" style="width: 100%;">
           <label for="inputDisponibilidadeSegunda">Turno</label>
-          <ng-multiselect-dropdown name="turno" [placeholder]="'Selecione ...'"
-          [settings]="dropdownSettings">
-          </ng-multiselect-dropdown>
+          <ng-multiselect-dropdown name="turno" [placeholder]="'Selecione ...'" [settings]="dropdownSettings"></ng-multiselect-dropdown>
         </div>
       </div>
-      
     </div>
   </div>
-
   <div class="col-8 justify-content-center">
     <div class="shadow mb-5 bg-white rounded">
       <div class="card-header mb-4">
