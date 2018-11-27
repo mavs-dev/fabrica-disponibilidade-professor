@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { UnidadeAcademicaService } from 'src/app/services/unidade-academica.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'pj-painel-selecao-professor',
@@ -7,39 +9,67 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./painel-selecao-professor.component.css']
 })
 export class PainelSelecaoProfessorComponent implements OnInit {
-  public data: any;
-
   mensagem: string;
 
   pesquisaProfessorForm: FormGroup;
 
-  dropdownSettings = {};
+  dropdownUnidadesSettings = {};
+  dropdownDiasSettings = {};
+  dropdownTurnosSettings = {};
+
+  professores =  [];
+  unidadesAcademicas = [];
+  diasDaSemana = [
+    { dia: 'SEGUNDA'},
+    { dia: 'TERÇA'},
+    { dia: 'QUARTA'},
+    { dia: 'QUINTA'},
+    { dia: 'SEXTA'},
+    { dia: 'SÁBADO'}
+  ];
+  turnos = [
+    {turno: 'MATUTINO'},
+    {turno: 'NOTURNO'},
+  ];
 
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder,
+              private unidadeAcademicaService: UnidadeAcademicaService,
+              private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-
-    this.data = [{ 'name': 'Yves Guilherme', 'email': 'Taguatinga Norte', 'age': 'JAVA 3', 'city': 'SEG; TER; QUA' },
-    { 'name': 'Yves Guilherme Lopo', 'email': 'Taguatinga Norte', 'age': 'JAVA 2', 'city': 'SEG' },
-    { 'name': 'Marcos Vieira', 'email': 'Taguatinga Norte', 'age': 'JAVA 1', 'city': 'QUA' },
-    { 'name': 'Alok', 'email': 'Ceilândia', 'age': 'ENGENHARIA DE SOFT. 2', 'city': 'QUI; SEX' },
-    { 'name': 'Tinku', 'email': 'Guará', 'age': 'C#', 'city': 'SEG; TER; QUA; QUI; SEX' },
-    { 'name': 'XYZ', 'email': 'Sobradinho', 'age': 'ALGORITMOS', 'city': 'SAB' },
-    { 'name': 'asas', 'email': 'Sobradinho', 'age': 'ENGENHARIA DE SOFT. 3', 'city': 'TER; QUI' },
-    { 'name': 'erer', 'email': 'Taguatinga', 'age': 'BANCO DE DADOS', 'city': 'SEGUNDA; QUAR; SEXT' },
-    { 'name': 'jhjh', 'email': 'Taguatinga Norte', 'age': 'ENGENHARIA DE SOFT. 1', 'city': 'TER' }
-    ];
+    this.carregarUnidadesAcademicas();
+    this.carregarProfessores();
 
     this.pesquisaProfessorForm = this.builder.group({});
 
-    this.dropdownSettings = {
+    this.dropdownUnidadesSettings = {
       singleSelection: false,
       idField: 'id',
       textField: 'nome',
       selectAllText: 'Selecionar todos',
       unSelectAllText: 'Desmarcar todos',
-      itemsShowLimit: 5,
+      itemsShowLimit: 3,
+      allowSearchFilter: false
+    };
+
+    this.dropdownDiasSettings = {
+      singleSelection: false,
+      idField: 'dia',
+      textField: 'dia',
+      selectAllText: 'Selecionar todos',
+      unSelectAllText: 'Desmarcar todos',
+      itemsShowLimit: 3,
+      allowSearchFilter: false
+    };
+
+    this.dropdownTurnosSettings = {
+      singleSelection: false,
+      idField: 'turno',
+      textField: 'turno',
+      selectAllText: 'Selecionar todos',
+      unSelectAllText: 'Desmarcar todos',
+      itemsShowLimit: 3,
       allowSearchFilter: false
     };
   }
@@ -47,5 +77,22 @@ export class PainelSelecaoProfessorComponent implements OnInit {
   salvar() {
 
   }
+
+  carregarUnidadesAcademicas() {
+    this.unidadeAcademicaService.getAll().subscribe(data => {
+      if (data) {
+        this.unidadesAcademicas = data;
+      }
+    });
+  }
+
+  carregarProfessores() {
+    this.usuarioService.getAll().subscribe(data => {
+      if (data) {
+        this.professores = data;
+      }
+    });
+  }
+
 
 }

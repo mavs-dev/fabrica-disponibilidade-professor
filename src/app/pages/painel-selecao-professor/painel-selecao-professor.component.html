@@ -13,7 +13,10 @@
       <div class="row col-md-12 mx-auto">
         <div class="form-group" style="width: 100%;">
           <label for="inputDisponibilidadeSegunda">Unidade acadêmica</label>
-          <ng-multiselect-dropdown name="unidadeAcademica" [placeholder]="'Selecione ...'" [settings]="dropdownSettings"></ng-multiselect-dropdown>
+          <ng-multiselect-dropdown name="unidadeAcademica" 
+            [placeholder]="'Selecione ...'" 
+            [settings]="dropdownUnidadesSettings"
+            [data]="unidadesAcademicas"></ng-multiselect-dropdown>
         </div>
       </div>
       <div class="row col-md-12 mx-auto">
@@ -22,13 +25,19 @@
       <div class="row col-md-12 mx-auto">
         <div class="form-group" style="width: 100%;">
           <label for="inputDisponibilidadeSegunda">Dia da semana</label>
-          <ng-multiselect-dropdown name="diaDaSemana" [placeholder]="'Selecione ...'" [settings]="dropdownSettings"></ng-multiselect-dropdown>
+          <ng-multiselect-dropdown name="diaDaSemana"
+            [placeholder]="'Selecione ...'"
+            [settings]="dropdownDiasSettings"
+            [data]="diasDaSemana"></ng-multiselect-dropdown>
         </div>
       </div>
       <div class="row col-md-12 mx-auto">
         <div class="form-group" style="width: 100%;">
           <label for="inputDisponibilidadeSegunda">Turno</label>
-          <ng-multiselect-dropdown name="turno" [placeholder]="'Selecione ...'" [settings]="dropdownSettings"></ng-multiselect-dropdown>
+          <ng-multiselect-dropdown name="turno"
+            [placeholder]="'Selecione ...'"
+            [settings]="dropdownTurnosSettings"
+            [data]="turnos"></ng-multiselect-dropdown>
         </div>
       </div>
     </div>
@@ -39,33 +48,33 @@
         <b>LISTAGEM DOS PROFESSORES</b>
       </div>
 
-      <table class="table table-sm table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <table class="table table-sm table-hover" [mfData]="professores" #mf="mfDataTable" [mfRowsOnPage]="5">
         <thead>
           <tr class="text-center">
             <th scope="col">
               <mfDefaultSorter by="name">Nome</mfDefaultSorter>
             </th>
-            <th scope="col">
+            <!-- <th scope="col">
               <mfDefaultSorter by="email">Unidade</mfDefaultSorter>
-            </th>
-            <th scope="col">
+            </th> -->
+            <!-- <th scope="col">
               <mfDefaultSorter by="age">Disciplina</mfDefaultSorter>
-            </th>
-            <th scope="col">
+            </th> -->
+            <!-- <th scope="col">
               <mfDefaultSorter by="city">Dia da Semana</mfDefaultSorter>
-            </th>
-            <th scope="col">
+            </th> -->
+            <!-- <th scope="col">
               Turno
-            </th>
+            </th> -->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of mf.data" class="text-center">
-            <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
+            <td>{{user.nome}}</td>
+            <!-- <td>{{user.perfil}</td>
             <td>{{user.age}}</td>
             <td>{{user.city | uppercase}}</td>
-            <td>Turno</td>
+            <td>Turno</td> -->
           </tr>
         </tbody>
         <tfoot>
