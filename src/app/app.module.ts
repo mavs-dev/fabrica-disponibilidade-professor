@@ -36,6 +36,7 @@ import { PainelCoordenadorComponent } from './pages/painel-coordenador/painel-co
 // BIBLIOTECAS EXTERNAS
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DataTableModule } from 'angular-6-datatable';
+import { SidebarModule } from 'ng-sidebar';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { DataTableModule } from 'angular-6-datatable';
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
     HttpClientModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    SidebarModule.forRoot()
   ],
   providers: [
   ],

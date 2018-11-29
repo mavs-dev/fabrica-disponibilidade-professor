@@ -17,25 +17,31 @@ export class PainelSelecaoProfessorComponent implements OnInit {
   dropdownDiasSettings = {};
   dropdownTurnosSettings = {};
 
-  professores =  [];
+  professores = [];
   unidadesAcademicas = [];
   diasDaSemana = [
-    { dia: 'SEGUNDA'},
-    { dia: 'TERÇA'},
-    { dia: 'QUARTA'},
-    { dia: 'QUINTA'},
-    { dia: 'SEXTA'},
-    { dia: 'SÁBADO'}
+    { dia: 'SEGUNDA' },
+    { dia: 'TERÇA' },
+    { dia: 'QUARTA' },
+    { dia: 'QUINTA' },
+    { dia: 'SEXTA' },
+    { dia: 'SÁBADO' }
   ];
   turnos = [
-    {turno: 'MATUTINO'},
-    {turno: 'NOTURNO'},
+    { turno: 'MATUTINO' },
+    { turno: 'NOTURNO' },
   ];
 
+  // tslint:disable-next-line:no-inferrable-types
+  public _opened: boolean = false;
+
+  public _toggleSidebar() {
+    this._opened = !this._opened;
+  }
 
   constructor(private builder: FormBuilder,
-              private unidadeAcademicaService: UnidadeAcademicaService,
-              private usuarioService: UsuarioService) { }
+    private unidadeAcademicaService: UnidadeAcademicaService,
+    private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.carregarUnidadesAcademicas();

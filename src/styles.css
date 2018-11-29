@@ -26,3 +26,15 @@ html, body {
 pj-input-text {
     width: 100%;
 }
+
+/* Add application styles & imports to this file! */
+.ng-sidebar {
+    background: #f8f9fa;
+    width: 25rem;
+}
+
+.ng-sidebar--left {
+    /* color: red !important; */
+    background: #f8f9fa;
+    width: 25rem;
+}

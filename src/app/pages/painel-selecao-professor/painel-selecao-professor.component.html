@@ -1,93 +1,116 @@
-<div class="container row mx-auto">
-  <div class="col-4 justify-content-center">
-    <div class="shadow mb-5 bg-white rounded">
-      <div class="card-header mb-4">
-        <b>Filtros de pesquisa</b>
-      </div>
-      <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
-      <form [formGroup]="pesquisaProfessorForm" (ngSubmit)="salvar()">
-      </form>
-      <div class="row col-md-12 mx-auto">
-        <pj-input-text label="Nome do Professor" name="nomeProfessor" icone="fa-user" placeText="Digite o nome do professor"></pj-input-text>
-      </div>
-      <div class="row col-md-12 mx-auto">
-        <div class="form-group" style="width: 100%;">
-          <label for="inputDisponibilidadeSegunda">Unidade acadêmica</label>
-          <ng-multiselect-dropdown name="unidadeAcademica" 
-            [placeholder]="'Selecione ...'" 
-            [settings]="dropdownUnidadesSettings"
-            [data]="unidadesAcademicas"></ng-multiselect-dropdown>
-        </div>
-      </div>
-      <div class="row col-md-12 mx-auto">
-        <pj-input-text label="Disciplina" name="disciplina" icone="fa-bookmark" placeText="Digite o nome da disciplina"></pj-input-text>
-      </div>
-      <div class="row col-md-12 mx-auto">
-        <div class="form-group" style="width: 100%;">
-          <label for="inputDisponibilidadeSegunda">Dia da semana</label>
-          <ng-multiselect-dropdown name="diaDaSemana"
-            [placeholder]="'Selecione ...'"
-            [settings]="dropdownDiasSettings"
-            [data]="diasDaSemana"></ng-multiselect-dropdown>
-        </div>
-      </div>
-      <div class="row col-md-12 mx-auto">
-        <div class="form-group" style="width: 100%;">
-          <label for="inputDisponibilidadeSegunda">Turno</label>
-          <ng-multiselect-dropdown name="turno"
-            [placeholder]="'Selecione ...'"
-            [settings]="dropdownTurnosSettings"
-            [data]="turnos"></ng-multiselect-dropdown>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-8 justify-content-center">
-    <div class="shadow mb-5 bg-white rounded">
-      <div class="card-header mb-4">
-        <b>LISTAGEM DOS PROFESSORES</b>
-      </div>
+<!-- Container for sidebar(s) + page content -->
+<ng-sidebar-container style="height: 100vh;">
 
-      <table class="table table-sm table-hover" [mfData]="professores" #mf="mfDataTable" [mfRowsOnPage]="5">
-        <thead>
-          <tr class="text-center">
-            <th scope="col">
-              <mfDefaultSorter by="name">Nome</mfDefaultSorter>
-            </th>
-            <!-- <th scope="col">
-              <mfDefaultSorter by="email">Unidade</mfDefaultSorter>
-            </th> -->
-            <!-- <th scope="col">
-              <mfDefaultSorter by="age">Disciplina</mfDefaultSorter>
-            </th> -->
-            <!-- <th scope="col">
-              <mfDefaultSorter by="city">Dia da Semana</mfDefaultSorter>
-            </th> -->
-            <!-- <th scope="col">
-              Turno
-            </th> -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of mf.data" class="text-center">
-            <td>{{user.nome}}</td>
-            <!-- <td>{{user.perfil}</td>
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" position="left" showBackdrop="true" closeOnClickBackdrop="true" #sidebar>
+    <div class="justify-content-center">
+      <div class="shadow mb-5 bg-white rounded">
+        <div class="card-header mb-4">
+          <b>Filtros de pesquisa</b>
+        </div>
+        <pj-alert *ngIf="mensagem" [mensagem]="mensagem" exibeBotaoFechar="true" classeCSS="alert-success"></pj-alert>
+        <form [formGroup]="pesquisaProfessorForm" (ngSubmit)="salvar()">
+        </form>
+        <div class="row col-md-12 mx-auto">
+          <pj-input-text label="Nome do Professor" name="nomeProfessor" icone="fa-user" placeText="Digite o nome do professor"></pj-input-text>
+        </div>
+        <div class="row col-md-12 mx-auto">
+          <div class="form-group" style="width: 100%;">
+            <label for="inputDisponibilidadeSegunda">Unidade acadêmica</label>
+            <ng-multiselect-dropdown name="unidadeAcademica" [placeholder]="'Selecione ...'" [settings]="dropdownUnidadesSettings"
+              [data]="unidadesAcademicas"></ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row col-md-12 mx-auto">
+          <pj-input-text label="Disciplina" name="disciplina" icone="fa-bookmark" placeText="Digite o nome da disciplina"></pj-input-text>
+        </div>
+        <div class="row col-md-12 mx-auto">
+          <div class="form-group" style="width: 100%;">
+            <label for="inputDisponibilidadeSegunda">Dia da semana</label>
+            <ng-multiselect-dropdown name="diaDaSemana" [placeholder]="'Selecione ...'" [settings]="dropdownDiasSettings"
+              [data]="diasDaSemana"></ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row col-md-12 mx-auto">
+          <div class="form-group" style="width: 100%;">
+            <label for="inputDisponibilidadeSegunda">Turno</label>
+            <ng-multiselect-dropdown name="turno" [placeholder]="'Selecione ...'" [settings]="dropdownTurnosSettings"
+              [data]="turnos"></ng-multiselect-dropdown>
+          </div>
+        </div>
+      </div>
+      <!-- /shadow mb-5 bg-white rounded -->
+    </div>
+    <!-- /justify-content-center -->
+  </ng-sidebar>
+  <!-- /ng-sidebar -->
+
+  <!-- Page content -->
+  <div ng-sidebar-content>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+      <div class="shadow mb-5 bg-white rounded">
+        <div class="card-header mb-4">
+          <b>LISTAGEM DOS PROFESSORES</b>
+          <a (click)="_toggleSidebar()" style="float: right; cursor: pointer;"><i class="fas fa-bars"></i></a>
+        </div>
+        <!-- /card-header mb-4 -->
+        <table class="table table-sm table-hover" [mfData]="professores" #mf="mfDataTable" [mfRowsOnPage]="5">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">
+                <mfDefaultSorter by="name">Nome</mfDefaultSorter>
+              </th>
+              <th scope="col">SEG</th>
+              <th scope="col">TER</th>
+              <th scope="col">QUA</th>
+              <th scope="col">QUI</th>
+              <th scope="col">SEXT</th>
+              <th scope="col">SÁB</th>
+              <th scope="col">|</th>
+              <th scope="col">SEG</th>
+              <th scope="col">TER</th>
+              <th scope="col">QUA</th>
+              <th scope="col">QUI</th>
+              <th scope="col">SEX</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <!-- <td>{{user.nome}}</td> -->
+              <td>Yves Guilherme Lopo Ribeiro Lima</td>
+              <!-- <td>{{user.perfil}</td>
             <td>{{user.age}}</td>
             <td>{{user.city | uppercase}}</td>
             <td>Turno</td> -->
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5">
-              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-
+              <td>TAG N</td>
+              <td>CEI</td>
+              <td>TAG</td>
+              <td>TAG</td>
+              <td>TAG</td>
+              <td>TAG</td>
+              <td></td>
+              <td>TAG</td>
+              <td>TAG</td>
+              <td>TAG</td>
+              <td>TAG</td>
+              <td>TAG</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="13">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <!-- /Table -->
+      </div>
+      <!-- /shadow mb-5 bg-white rounded -->
     </div>
+    <!-- /col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center -->
   </div>
+  <!-- /ng-sidebar-content -->
 
-</div>
+</ng-sidebar-container>
+<!-- /ng-sidebar-container -->
